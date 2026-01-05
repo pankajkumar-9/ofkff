@@ -49,6 +49,8 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -57,6 +59,8 @@ body {
     background-color: var(--color-bg-page);
     line-height: 1.6;
     position: relative;
+    overflow-x: hidden;
+    width: 100%;
     /* Removed background-attachment: fixed for performance */
 }
 
@@ -225,6 +229,10 @@ p {
     box-shadow: 0 6px 20px rgba(46, 125, 50, 0.23);
 }
 
+.btn:active {
+    transform: scale(0.96);
+}
+
 /* Header */
 header {
     height: var(--header-height);
@@ -331,6 +339,12 @@ header .container {
 .solution-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
+}
+
+.card:active,
+.solution-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
 }
 
 .icon-box {
@@ -581,8 +595,10 @@ footer {
 /* Gallery */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    /* Tighter on mobile from previous media query */
+    /* Ensure no wider than screen on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     margin-top: 3rem;
 }
 
@@ -1552,67 +1568,307 @@ footer {
     }
 }
 
-         w i d t h :   1 0 0 % ;
-             h e i g h t :   1 0 0 % ;
-             b a c k g r o u n d :   r g b a ( 0 ,    0 ,    0 ,    0 . 5 ) ;
-             b a c k d r o p - f i l t e r :   b l u r ( 5 p x ) ;
-             z - i n d e x :   2 0 0 0 ;
-             d i s p l a y :   f l e x ;
-             a l i g n - i t e m s :   c e n t e r ;
-             j u s t i f y - c o n t e n t :   c e n t e r ;
-             o p a c i t y :   0 ;
-             a n i m a t i o n :   f a d e I n   0 . 3 s   f o r w a r d s ;
-     
+/* =========================================
+   Mobile Navigation & Optimization
+   ========================================= */
+
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+    z-index: 2001;
+    /* Above cart modal overlay */
 }
 
-         . c a r t - m o d a l    {
-                 b a c k g r o u n d :    w h i t e ;
-                 p a d d i n g :    2 r e m ;
-                 b o r d e r - r a d i u s :    v a r ( - - r a d i u s - l g ) ;
-                 b o x - s h a d o w :    v a r ( - - s h a d o w - m d ) ;
-                 t e x t - a l i g n :    c e n t e r ;
-                 m a x - w i d t h :    9 0 % ;
-                 w i d t h :    4 0 0 p x ;
-                 t r a n s f o r m :    s c a l e ( 0 . 9 ) ;
-                 a n i m a t i o n :    s c a l e I n   0 . 3 s   f o r w a r d s ;
-         
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: all 0.3s linear;
 }
 
-         . c a r t - m o d a l   h 3    {
-                 m a r g i n - b o t t o m :    1 r e m ;
-                 c o l o r :    v a r ( - - c o l o r - p r i m a r y ) ;
-         
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
-         . c a r t - m o d a l   p    {
-                 m a r g i n - b o t t o m :    2 r e m ;
-                 c o l o r :    v a r ( - - c o l o r - t e x t - b o d y ) ;
-         
+.mobile-nav-overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
-         . c a r t - a c t i o n s    {
-                 d i s p l a y :    f l e x ;
-                 g a p :    1 r e m ;
-                 j u s t i f y - c o n t e n t :    c e n t e r ;
-         
+.mobile-nav-content {
+    background: white;
+    width: 280px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -280px;
+    /* Slide out from left */
+    transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-         @ k e y f r a m e s   f a d e I n    {
-                 t o    {
-           o p a c i t y :    1 ;
-           
+.mobile-nav-overlay.active .mobile-nav-content {
+    left: 0;
+}
+
+.close-menu {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-text-body);
+    margin-bottom: 2rem;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mobile-nav-links a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Media Queries */
+@media (max-width: 900px) {
+
+    /* Header Changes */
+    .desktop-nav {
+        display: none !important;
+        /* Hide desktop nav */
     }
 
-         
-}
-
-         @ k e y f r a m e s   s c a l e I n    {
-                 t o    {
-           t r a n s f o r m :    s c a l e ( 1 ) ;
-           
+    .hamburger {
+        display: flex;
+        /* Show hamburger */
     }
 
-         
+    header .container {
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .pricing-grid,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
 }
 
-     
+@media (max-width: 768px) {
+
+    /* Typography Adjustments */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Layout Adjustments */
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Calculator Adjustments */
+    .calculator-box {
+        flex-direction: column;
+    }
+
+    .calc-inputs,
+    .calc-results {
+        padding: 1.5rem;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Global Container Fixes */
+    .container {
+        padding: 0 1rem;
+        width: 100%;
+    }
+
+    .section {
+        padding: 2.5rem 1rem;
+        overflow-x: hidden;
+        /* Extra safety */
+    }
+
+    /* Severe Typography Reduction */
+    h1 {
+        font-size: 2.2rem;
+        word-wrap: break-word;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        /* Fixes FAQ overflow */
+        white-space: normal;
+        /* Override nowrap */
+        line-height: 1.2;
+    }
+
+    /* Component Constraints */
+    .card,
+    .solution-card,
+    .impact-box,
+    .calculator-box,
+    .doctor-box,
+    .location-card,
+    .product-card-premium {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: var(--radius-md);
+    }
+
+    /* Ensure content inside cards doesn't push out */
+    .impact-content,
+    .calc-inputs,
+    .calc-results,
+    .loc-details {
+        padding: 1.5rem;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-item h3 {
+        font-size: 2.5rem;
+    }
+
+    /* Fix Impact Section Visibility on Mobile */
+    .impact-box .gradient-text {
+        background: none;
+        -webkit-text-fill-color: white;
+        color: white;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+    }
+
+    /* Header/Nav adjustments */
+    .header-right {
+        gap: 0.8rem !important;
+        /* Tighter spacing */
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .logo img {
+        height: 32px !important;
+        /* Smaller logo */
+    }
+
+    /* Prevent iOS Zoom on inputs */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+
+    /* Ensure Gallery doesn't overflow */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   Mobile UX: Horizontal Snap Cards
+   ========================================= */
+@media (max-width: 768px) {
+    .snap-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding-bottom: 2rem;
+        /* Space for scrollbar/swipe */
+        margin-right: -1rem;
+        /* Bleed to edge */
+        padding-right: 1rem;
+        /* Padding for last item */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll on iOS */
+
+        /* Hide scrollbar for cleaner look */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .snap-container::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari */
+    }
+
+    /* Cards inside snap container */
+    .snap-container .card,
+    .snap-container .solution-card {
+        min-width: 85%;
+        /* Peek effect */
+        scroll-snap-align: center;
+        margin-right: 0;
+        flex-shrink: 0;
+    }
+
+    /* Optional: Centering wrapper to ensure first item isn't flush if needed */
+    .snap-container::after {
+        content: '';
+        min-width: 1rem;
+    }
+}

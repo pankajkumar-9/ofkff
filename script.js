@@ -283,7 +283,7 @@ const translations = {
         'nav_gallery': 'Gallery',
         'nav_about': 'About',
         'nav_contact': 'Contact',
-        'hero_title': 'OFKFF: Organic Farming Kit for Farmers',
+        'hero_title': 'OFKFF: Organic Farming Kit For Farmers',
         'hero_desc': 'A simple, low-cost solution for chemical-free and sustainable farming',
         'hero_btn': 'Explore the Model',
         'prob_title': 'Why We Need Change',
@@ -409,4 +409,19 @@ const savedLang = localStorage.getItem('ofkff_lang');
 if (savedLang) {
     document.getElementById('langSelect').value = savedLang;
     changeLanguage(savedLang);
+}
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const nav = document.getElementById('mobileNav');
+    const hamburger = document.querySelector('.hamburger');
+
+    // Toggle active class
+    if (nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+    } else {
+        nav.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+    }
 }

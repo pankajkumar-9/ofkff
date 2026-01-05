@@ -27,6 +27,38 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="canonical" href="https://ofkff.netlify.app/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OFKFF - Organic Farming Kit",
+      "url": "https://ofkff.netlify.app/",
+      "logo": "https://ofkff.netlify.app/assets/logo.png",
+      "description": "Empowering farmers with complete, low-cost organic farming solutions.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi", "or"]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OFKFF",
+      "url": "https://ofkff.netlify.app/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ofkff.netlify.app/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -47,7 +79,14 @@
                         <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
                     </select>
                 </div>
-                <nav style="display: flex; align-items: center; gap: 2rem;">
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="desktop-nav" style="display: flex; align-items: center; gap: 2rem;">
                     <ul class="nav-links">
                         <li><a href="#problem" data-i18n="nav_problem">The Problem</a></li>
                         <li><a href="#solution" data-i18n="nav_solution">The Solution</a></li>
@@ -69,13 +108,27 @@
                 </nav>
             </div>
         </div>
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobileNav">
+            <div class="mobile-nav-content">
+                <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+                <ul class="mobile-nav-links">
+                    <li><a href="#problem" onclick="toggleMobileMenu()" data-i18n="nav_problem">The Problem</a></li>
+                    <li><a href="#solution" onclick="toggleMobileMenu()" data-i18n="nav_solution">The Solution</a></li>
+                    <li><a href="#how-it-works" onclick="toggleMobileMenu()" data-i18n="nav_works">How It Works</a></li>
+                    <li><a href="#impact" onclick="toggleMobileMenu()" data-i18n="nav_impact">Impact</a></li>
+                    <li><a href="#gallery" onclick="toggleMobileMenu()" data-i18n="nav_gallery">Gallery</a></li>
+                    <li><a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">About</a></li>
+                    <li><a href="#contact" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="gradient-text" data-i18n="hero_title">OFKFF: Organic Farming Kit for Farmers</h1>
+                <h1 class="gradient-text" data-i18n="hero_title">OFKFF: Organic Farming Kit For Farmers</h1>
                 <p data-i18n="hero_desc">A simple, low-cost solution for chemical-free and sustainable farming</p>
                 <a href="#solution" class="btn btn-primary" data-i18n="hero_btn">Explore the Model</a>
             </div>
@@ -86,7 +139,7 @@
     <section id="problem" class="section section-light">
         <div class="container text-center">
             <h2 data-i18n="prob_title">Why We Need Change</h2>
-            <div class="grid grid-3 problem-grid">
+            <div class="grid grid-3 problem-grid snap-container">
                 <div class="card fade-in">
                     <div class="icon-box">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -136,7 +189,7 @@
                 style="margin-top: -3rem; margin-bottom: 3rem; font-size: 0.9rem; color: var(--color-primary); font-weight: 500; opacity: 0.8; margin-left: auto; margin-right: auto;">
                 (Click on any component below to view details)
             </p>
-            <div class="grid grid-2 solution-grid">
+            <div class="grid grid-2 solution-grid snap-container">
                 <a href="vermicompost.html#market" class="solution-card fade-in stagger-1">
                     <span class="step-number">01</span>
                     <h3>Vermicompost</h3>
@@ -174,7 +227,7 @@
         style="background: linear-gradient(to right, #ffffff, #e8f5e9);">
         <div class="container text-center">
             <h2 data-i18n="doctor_title">Interactive Crop Doctor</h2>
-            <p style="margin-bottom: 2rem;" data-i18n="doctor_desc">Diagnose current issues and find the perfect organic
+            <p class="section-subtitle" data-i18n="doctor_desc">Diagnose current issues and find the perfect organic
                 solution.</p>
 
             <div class="doctor-box fade-in">
