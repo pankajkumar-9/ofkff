@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ofkff.netlify.app/sitemap.xml

@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Jeevamrut - Microbial Immunity Booster | OFKFF</title>
+    <meta name="description"
+        content="Enhance your crop immunity with Organic Jeevamrut. A potent liquid microbial culture that increases soil activity and plant health.">
+    <meta name="keywords"
+        content="jeevamrut, liquid fertilizer, organic manure, crop immunity, microbial culture, indian organic farming">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="Organic Jeevamrut - OFKFF">
+    <meta property="og:description" content="Potent microbial immunity booster for healthy crops.">
+    <meta property="og:image" content="assets/jeevamrut-10l.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"
+                style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
+                OFKFF
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Back to Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 50vh;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jeevamrut</h1>
+                <p>The Microbial Immunity Booster</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Section -->
+    <section id="market" class="section section-light" style="padding-top: 2rem;">
+        <div class="container">
+            <!-- E-commerce Header -->
+            <div class="market-header">
+                <div class="market-title">
+                    <h2>Organic Store</h2>
+                    <p>Potent formulation for crop health.</p>
+                </div>
+                <div class="market-controls">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search for products...">
+                        <button class="btn-search"><svg width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg></button>
+                    </div>
+                    <div class="cart-icon" onclick="openCart()">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg> <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="market-layout">
+                <!-- Sidebar Filters -->
+                <aside class="market-sidebar">
+                    <div class="filter-group">
+                        <h3>Category</h3>
+                        <label><input type="checkbox"> Vermicompost</label>
+                        <label><input type="checkbox" checked> Liquid Fertilizers</label>
+                        <label><input type="checkbox"> Pest Repellents</label>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Volume</h3>
+                        <label><input type="checkbox"> 1 Liter</label>
+                        <label><input type="checkbox"> 5 Liters</label>
+                        <label><input type="checkbox"> 10 Liters</label>
+                        <label><input type="checkbox"> 50 Liters</label>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Customer Ratings</h3>
+                        <label><input type="radio" name="rating"> 4&#9733; & above</label>
+                        <label><input type="radio" name="rating"> 3&#9733; & above</label>
+                    </div>
+                </aside>
+
+                <!-- Product Grid -->
+                <div class="market-products">
+                    <!-- 1L -->
+                    <div class="product-card-premium">
+
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-1l.png" alt="1L Jeevamrut">
+                        </div>
+                        <div class="product-details">
+                            <h3>Organic Jeevamrut - 1 Liter Bottle</h3>
+
+                            <div class="price-block">
+                                <span class="current-price">&#8377;150</span>
+                                <span class="original-price">&#8377;200</span>
+                                <span class="discount">25% off</span>
+                            </div>
+                            <p class="delivery-info">FREE delivery by <strong>Tomorrow</strong></p>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-5l.png" alt="5L Jeevamrut">
+                        </div>
+                        <div class="product-details">
+                            <h3>Organic Jeevamrut - 5 Liter Can</h3>
+
+                            <div class="price-block">
+                                <span class="current-price">&#8377;650</span>
+                                <span class="original-price">&#8377;900</span>
+                                <span class="discount">28% off</span>
+                            </div>
+                            <p class="delivery-info">FREE delivery by <strong>Tomorrow</strong></p>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10L -->
+                    <div class="product-card-premium">
+                        <div class="badge-organic">Concentrated</div>
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-10l.png" alt="10L Jeevamrut">
+                        </div>
+                        <div class="product-details">
+                            <h3>Organic Jeevamrut - 10 Liter Drum</h3>
+
+                            <div class="price-block">
+                                <span class="current-price">&#8377;1,200</span>
+                                <span class="original-price">&#8377;1,800</span>
+                                <span class="discount">33% off</span>
+                            </div>
+                            <p class="delivery-info">FREE delivery within <strong>2 Days</strong></p>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 50L -->
+                    <div class="product-card-premium">
+                        <div class="badge-bulk">Farm Pack</div>
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-50l.png" alt="50L Jeevamrut">
+                        </div>
+                        <div class="product-details">
+                            <h3>Organic Jeevamrut - 50 Liter Barrel</h3>
+
+                            <div class="price-block">
+                                <span class="current-price">&#8377;5,000</span>
+                                <span class="original-price">&#8377;7,500</span>
+                                <span class="discount">33% off</span>
+                            </div>
+                            <p class="delivery-info">Special Farm Delivery</p>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <h2>About Jeevamrut</h2>
+            <p>Jeevamrut is a natural liquid fertilizer and traditional organic manure. It is an excellent source of
+                natural carbon, biomass, nitrogen, phosphorus, potassium, and huge lots of other essential
+                micro-nutrients required for your crops.</p>
+            <br>
+            <h3>Benefits</h3>
+            <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 1rem; color: var(--color-text-body);">
+                <li>Acts as an agent to assume cellular development.</li>
+                <li>Increases the microbial count in the soil significantly.</li>
+                <li>Helpful in faster decomposition of organic matter in the soil.</li>
+                <li>Improves the immunity of the plant system.</li>
+                <li>Enhances earthworm activity in the soil.</li>
+            </ul>
+            <br>
+            <h3>Preparation Method</h3>
+            <p>Mix cow dung, cow urine, jaggery (brown sugar), pulse flour, and soil from the farm bund in water.
+                Ferment this mixture for 48 hours in the shade, stirring twice daily. It is then ready for application.
+            </p>
+
+            <div style="margin-top: 3rem;">
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OFKFF. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>
