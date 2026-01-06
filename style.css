@@ -36,6 +36,455 @@
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Dark Theme Overrides - premium/Material Inspired */
+body.dark-theme {
+    /* Palette */
+    --color-primary: #4ade80;
+    /* Vivid Green for contrast */
+    --color-primary-hover: #22c55e;
+    --color-secondary: #242526;
+    /* Dark Surface */
+    --color-accent: #66bb6a;
+
+    /* Text */
+    --color-text-main: #e4e6eb;
+    /* High Emphasis */
+    --color-text-body: #b0b3b8;
+    /* Medium Emphasis */
+    --color-text-light: #9ca3af;
+    /* Low Emphasis */
+
+    /* Backgrounds */
+    --color-bg-page: #121212;
+    /* Deepest Dark */
+    --color-bg-section: #18191a;
+    /* Section Dark */
+    --color-bg-surface: #242526;
+    /* Card Surface */
+    --color-bg-dark: #000000;
+
+    /* Borders & Shadows */
+    --color-border: #3e4042;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Component Overrides for Dark Mode --- */
+
+/* Header */
+body.dark-theme header {
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid var(--color-border);
+}
+
+body.dark-theme .logo {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .nav-links a {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Sections */
+body.dark-theme .section-light {
+    background-color: var(--color-bg-section);
+    border-color: var(--color-border);
+}
+
+/* Cards (Feature, Product, Solution, Gallery) */
+body.dark-theme .card,
+body.dark-theme .solution-card,
+body.dark-theme .gallery-item,
+body.dark-theme .stat-card,
+body.dark-theme .accordion-item,
+body.dark-theme .faq-item,
+body.dark-theme .chatbot-greeting,
+body.dark-theme .chatbot-menu {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-main);
+}
+
+body.dark-theme .card:hover,
+body.dark-theme .solution-card:hover {
+    background-color: #303031;
+    border-color: var(--color-primary);
+}
+
+/* Inputs & Forms */
+body.dark-theme select,
+body.dark-theme input {
+    background-color: #3a3b3c;
+    color: var(--color-text-main);
+    border-color: var(--color-border);
+}
+
+body.dark-theme input::placeholder {
+    color: var(--color-text-light);
+}
+
+/* Hero Section Adjustments */
+body.dark-theme .hero {
+    /* Remove the white radial gradient */
+    background: radial-gradient(circle at center, rgba(46, 125, 50, 0.15) 0%, rgba(18, 18, 18, 0) 70%);
+}
+
+body.dark-theme .hero h1 {
+    /* Reset text gradient for better readability or adjust it */
+    background: linear-gradient(180deg, #ffffff 0%, #b0b3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Icons within cards */
+body.dark-theme .icon-box svg {
+    color: var(--color-primary);
+}
+
+/* Dark Mode Overlay Fix - CRITICAL */
+body.dark-theme::after {
+    background: rgba(0, 0, 0, 0.75) !important;
+    /* Darken the background image */
+}
+
+/* Card Background Fixes */
+body.dark-theme .card,
+body.dark-theme .feature-card,
+body.dark-theme .product-card,
+body.dark-theme .solution-card,
+body.dark-theme .gallery-item,
+body.dark-theme .stat-card,
+body.dark-theme .accordion-item,
+body.dark-theme .faq-item,
+body.dark-theme .chatbot-menu {
+    background-color: var(--color-bg-surface) !important;
+    border-color: var(--color-border);
+    color: var(--color-text-main);
+}
+
+/* Chatbot Specifics */
+body.dark-theme .chatbot-header {
+    border-bottom-color: var(--color-border);
+}
+
+body.dark-theme .chat-option {
+    background-color: #303031;
+    /* Lighter than surface */
+    color: var(--color-text-main);
+}
+
+body.dark-theme .chat-option:hover {
+    background-color: #3a3b3c;
+}
+
+body.dark-theme .accordion-header:hover {
+    background-color: #3a3b3c;
+}
+
+body.dark-theme .chatbot-toggle {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-primary);
+}
+
+/* Accordions */
+body.dark-theme .accordion-header {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-main);
+}
+
+/* --- Premium Details (Scrollbars, Selection, Cart) --- */
+
+/* Universal Dark Mode Text Reset */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme p,
+body.dark-theme li,
+body.dark-theme span,
+body.dark-theme div {
+    color: var(--color-text-main);
+}
+
+body.dark-theme p,
+body.dark-theme li {
+    color: var(--color-text-body);
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .sub-text,
+body.dark-theme .step-number {
+    color: var(--color-text-light) !important;
+}
+
+/* Fix Hero Gradient Text in Dark Mode */
+body.dark-theme .hero h1 {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--color-text-main);
+}
+
+/* Fix Impact Section Contrast */
+body.dark-theme .impact-box {
+    background: #1e3a29;
+    /* Darker green */
+}
+
+body.dark-theme .impact-content h2,
+body.dark-theme .impact-content p,
+body.dark-theme .impact-content li {
+    color: #ffffff !important;
+    /* Force white on dark green */
+}
+
+/* Fix Input Text Color */
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+    color: #ffffff !important;
+    background-color: #2c2c2e !important;
+}
+
+/* --- Premium Details (Scrollbars, Selection, Cart) --- */
+
+/* Smooth Transition for Theme Switch */
+body,
+body * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 6px;
+    border: 3px solid var(--color-bg-page);
+    /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-text-light);
+}
+
+/* Selection Color */
+::selection {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* Footer Override */
+body.dark-theme footer {
+    background-color: var(--color-bg-section) !important;
+    border-top-color: var(--color-border) !important;
+}
+
+/* Cart Page Overrides */
+body.dark-theme .cart-table,
+body.dark-theme .cart-summary,
+body.dark-theme .cart-table th,
+body.dark-theme .cart-table td {
+    background-color: var(--color-bg-surface) !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .cart-table th {
+    background-color: #303031 !important;
+    /* Slightly lighter header */
+}
+
+body.dark-theme .qty-btn {
+    background-color: var(--color-bg-section);
+    border-color: var(--color-border);
+    color: var(--color-text-main);
+}
+
+body.dark-theme .qty-btn:hover {
+    background-color: var(--color-border);
+}
+
+/* Empty Cart Message */
+body.dark-theme .empty-cart-msg {
+    color: var(--color-text-body);
+}
+
+/* --- Product Page & Market Layout Overrides --- */
+body.dark-theme .product-card-premium {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .market-sidebar a {
+    color: var(--color-primary-hover) !important;
+}
+
+body.dark-theme .market-sidebar h3 {
+    color: var(--color-text-main);
+}
+
+body.dark-theme .market-sidebar p {
+    color: var(--color-text-body) !important;
+}
+
+body.dark-theme .current-price {
+    color: var(--color-text-main);
+}
+
+body.dark-theme .original-price {
+    color: var(--color-text-light);
+}
+
+body.dark-theme .delivery-info strong {
+    color: var(--color-primary);
+}
+
+body.dark-theme .filter-group {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .search-bar input {
+    background-color: var(--color-bg-section);
+    color: var(--color-text-main);
+    border-color: var(--color-border);
+}
+
+body.dark-theme .search-bar button {
+    color: var(--color-text-light);
+}
+
+body.dark-theme .cart-page-container {
+    background-color: var(--color-bg-page);
+}
+
+body.dark-theme .cart-table th {
+    background-color: #303031;
+    color: var(--color-text-main);
+    border-bottom-color: var(--color-border);
+}
+
+body.dark-theme .cart-table td {
+    border-bottom-color: var(--color-border);
+}
+
+body.dark-theme .cart-summary {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .sub-text,
+body.dark-theme .step-number {
+    color: var(--color-text-light);
+}
+
+body.dark-theme .cart-summary p {
+    color: var(--color-text-body) !important;
+}
+
+/* Mobile Nav Overlay */
+body.dark-theme .mobile-nav-content {
+    background-color: var(--color-bg-page);
+}
+
+body.dark-theme .mobile-nav-links a {
+    color: var(--color-text-main);
+}
+
+body.dark-theme .close-menu {
+    color: var(--color-text-main);
+}
+
+/* --- Fix for "How it Works" / Process FLow --- */
+body.dark-theme .connector {
+    background: var(--color-border);
+}
+
+body.dark-theme .circle {
+    box-shadow: 0 0 0 8px var(--color-bg-page);
+    /* Match dark background */
+}
+
+/* --- Fix for Footer Links --- */
+body.dark-theme .footer-links a {
+    color: var(--color-text-light);
+}
+
+body.dark-theme .footer-links a:hover {
+    color: var(--color-primary);
+}
+
+/* --- Fix for Map Overlay text --- */
+body.dark-theme .view-map-btn {
+    background: var(--color-bg-surface);
+    color: var(--color-text-main);
+}
+
+/* --- Fix for "Expert Advice" Sidebar Text --- */
+body.dark-theme .market-sidebar p {
+    color: var(--color-text-body) !important;
+}
+
+body.dark-theme .market-sidebar h3 {
+    color: var(--color-text-main) !important;
+}
+
+/* --- Improved Location Card Dark Mode --- */
+body.dark-theme .location-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .loc-hours {
+    background-color: var(--color-bg-section);
+    color: var(--color-text-light);
+}
+
+body.dark-theme .view-map-btn {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-main);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Global Text Contrast Enforcement --- */
+body.dark-theme p,
+body.dark-theme li,
+body.dark-theme span,
+body.dark-theme div {
+    color: var(--color-text-body);
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme strong,
+body.dark-theme b {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .text-muted {
+    color: var(--color-text-light) !important;
+}
+
+body.dark-theme .cart-summary p {
+    color: var(--color-text-body) !important;
+}
+
 /* Base Reset & Typography */
 * {
     margin: 0;
@@ -377,10 +826,35 @@ header .container {
     z-index: 0;
 }
 
+/* Solution Card Content */
 .solution-card h3,
 .solution-card p {
     position: relative;
     z-index: 1;
+}
+
+.btn-shop-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.solution-card:hover .btn-shop-sm {
+    gap: 0.5rem;
+    text-decoration: none;
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 125, 50, 0.2);
 }
 
 /* Process Flow */
@@ -535,6 +1009,59 @@ header .container {
     outline: none;
     border-color: white;
     background: rgba(255, 255, 255, 0.15);
+}
+
+/* Accordion Styles */
+.accordion-item {
+    border: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: white;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: var(--color-bg-light);
+}
+
+.accordion-header .icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-header .icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    padding: 0 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.accordion-item.active .accordion-content {
+    /* Height handled by JS */
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
 }
 
 /* Footer */
@@ -802,7 +1329,48 @@ footer {
     margin-bottom: 1rem;
     color: var(--color-text-main);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.filter-group p {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Sidebar Links Default */
+.market-sidebar a:not(.btn) {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.market-sidebar a:not(.btn):hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* Sidebar Dark Mode Overrides */
+body.dark-theme .market-sidebar {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .market-sidebar h3 {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .market-sidebar p {
+    color: var(--color-text-body) !important;
+}
+
+body.dark-theme .market-sidebar a:not(.btn) {
+    color: var(--color-primary-light) !important;
 }
 
 .filter-group label {
@@ -1389,8 +1957,8 @@ footer {
 /* Language Selector */
 .lang-switch select {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.95);
+    /* backdrop-filter removed for performance */
     transition: all 0.2s;
 }
 
@@ -1518,8 +2086,8 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.6);
+    /* backdrop-filter removed for performance */
     z-index: 2000;
     display: flex;
     align-items: center;
@@ -1729,6 +2297,40 @@ footer {
     }
 }
 
+/* Gallery Filters */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+}
+
 @media (max-width: 480px) {
 
     /* Global Container Fixes */
@@ -1857,10 +2459,19 @@ footer {
     }
 
     /* Cards inside snap container */
+    /* Cards inside snap container - Peek Effect (80%) */
     .snap-container .card,
-    .snap-container .solution-card {
-        min-width: 85%;
-        /* Peek effect */
+    .snap-container .solution-card,
+    .snap-container .process-step {
+        min-width: 80%;
+        scroll-snap-align: center;
+        margin-right: 0;
+        flex-shrink: 0;
+    }
+
+    /* Gallery - One Photo at a Time (100%) */
+    .snap-container .gallery-item {
+        min-width: 100%;
         scroll-snap-align: center;
         margin-right: 0;
         flex-shrink: 0;
@@ -1871,4 +2482,472 @@ footer {
         content: '';
         min-width: 1rem;
     }
+
+    /* FORCED OVERRIDES for Mobile Scroll Optimization */
+    .process-flow {
+        flex-direction: row !important;
+        align-items: stretch;
+    }
+
+    /* Gallery Grid Override - Force Single Slide */
+    .gallery-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: none !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+
+        /* Ensure items don't stretch tall */
+        align-items: flex-start;
+
+        /* Reset any grid gaps interfering with full width */
+        gap: 0 !important;
+    }
+
+    .gallery-item {
+        width: 100% !important;
+        /* Ensure full width */
+        min-width: 100% !important;
+        flex: 0 0 100% !important;
+
+        /* Add slight padding/margin if needed for separation, but user asked for "frame" */
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        /* Allow height to adjust naturally to avoid "zoom" or cropping */
+        object-fit: contain;
+        /* Ensure full image is visible */
+        aspect-ratio: 4/3;
+        border-radius: 8px;
+    }
+
+    /* COMPACT GRID OVERRIDES for Mobile */
+
+    /* Impact Stats - Force 3 in a row */
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .stat-item h3 {
+        font-size: 1.8rem !important;
+        /* Smaller numbers */
+        margin-bottom: 0.2rem !important;
+    }
+
+    .stat-item p {
+        font-size: 0.8rem !important;
+        /* Smaller text */
+        line-height: 1.2 !important;
+    }
+
+    /* Estimator Results - Force 2x2 Grid */
+    .result-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    .result-item {
+        padding: 0.75rem !important;
+        text-align: center;
+    }
+
+    .value-box {
+        font-size: 1.4rem !important;
+    }
+
+    /* Crop Doctor - Force 2x2 Grid */
+    .doctor-options {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+        margin-top: 1rem !important;
+    }
+
+    .btn-option {
+        padding: 1rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .btn-option .icon {
+        font-size: 2rem !important;
+        /* Smaller icons */
+    }
+}
+
+/* Scroll Hint Animation */
+.scroll-hint-wrapper {
+    position: relative;
+    /* Ensure relative positioning for absolute hint */
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    pointer-events: none;
+    background: rgba(46, 125, 50, 0.85);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: bounceRight 2s infinite;
+    opacity: 0;
+    /* Hidden by default, shown on mobile via media query */
+    transition: opacity 0.5s;
+}
+
+@keyframes bounceRight {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(0);
+    }
+
+    40% {
+        transform: translateX(-10px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-hint {
+        opacity: 1;
+    }
+
+    /* Hide hint if explicitly set to hidden via JS */
+    .scroll-hint.hidden {
+        opacity: 0;
+    }
+}
+
+/* --- Chatbot Widget --- */
+.chatbot-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1010;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-toggle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pulse Animation for FAB */
+.chatbot-toggle::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    animation: pulse-ring 2s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Greeting Bubble */
+.chatbot-greeting {
+    background-color: #fff;
+    color: #333;
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px 20px 0 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    animation: greetingPop 0.5s forwards 1s;
+    pointer-events: none;
+    z-index: 1005;
+}
+
+@keyframes greetingPop {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Chat Menu */
+.chatbot-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    transform-origin: bottom right;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chatbot-menu.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.chatbot-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+}
+
+.chat-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    background: #f8f9fa;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    text-align: left;
+    color: #333;
+    font-weight: 500;
+}
+
+.chat-option:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.chat-option .icon {
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+}
+
+/* Animation Utility */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Fix Cart Alignment Globally */
+.cart-count {
+    position: static;
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 0 6px;
+    margin-left: 5px;
+    display: inline-flex;
+    /* Ensure it doesn't break layout */
+    align-items: center;
+    justify-content: center;
+}
+
+.global-cart,
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    /* Let margin handle spacing */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* EMERGENCY FIX 2 */
+.fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* =========================================
+   Dark Mode Overrides for Specific Sections
+   ========================================= */
+
+/* Force Section Backgrounds (Override Inline Styles) */
+body.dark-theme #calculator,
+body.dark-theme #crop-doctor,
+body.dark-theme #location {
+    background: var(--color-bg-page) !important;
+}
+
+/* Smart Farm Estimator */
+body.dark-theme .calc-inputs {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-main);
+}
+
+body.dark-theme .calc-inputs h3 {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .input-group label {
+    color: var(--color-text-body);
+}
+
+body.dark-theme .range-wrap .unit {
+    color: var(--color-text-light);
+}
+
+body.dark-theme .calc-results {
+    background-color: #1e3a29 !important;
+    /* Dark Green */
+    color: white !important;
+}
+
+body.dark-theme .result-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .result-item .label,
+body.dark-theme .result-item .value-box,
+body.dark-theme .result-item .sub-text,
+body.dark-theme .calc-results h3 {
+    color: white !important;
+}
+
+/* Interactive Crop Doctor */
+body.dark-theme .doctor-box {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .doctor-step h3 {
+    color: var(--color-text-main) !important;
+}
+
+body.dark-theme .btn-option {
+    border-color: var(--color-border);
+    background-color: var(--color-bg-section);
+}
+
+body.dark-theme .btn-option span {
+    color: var(--color-text-main);
+}
+
+body.dark-theme .btn-option:hover {
+    background-color: var(--color-border);
+}
+
+body.dark-theme .result-card {
+    background-color: var(--color-bg-section);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+body.dark-theme .result-card h3 {
+    color: var(--color-primary) !important;
+}
+
+body.dark-theme .result-card p {
+    color: var(--color-text-body) !important;
+}
+
+/* Visit Our Production Unit */
+body.dark-theme .location-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+body.dark-theme .loc-details h3 {
+    color: var(--color-primary) !important;
+}
+
+body.dark-theme .loc-address {
+    color: var(--color-text-body) !important;
+}
+
+body.dark-theme .loc-hours {
+    background-color: var(--color-bg-section);
+    color: var(--color-text-light);
+}
+
+body.dark-theme .map-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .view-map-btn {
+    background: var(--color-bg-surface);
+    color: var(--color-text-main);
 }

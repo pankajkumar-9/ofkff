@@ -27,11 +27,29 @@
                 <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
                 OFKFF
             </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Back to Home</a></li>
-                </ul>
-            </nav>
+            <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem;">
+                <div class="lang-switch">
+                    <select id="langSelect" onchange="changeLanguage(this.value)"
+                        style="padding: 0.3rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;">
+                        <option value="en">🇺🇸 English</option>
+                        <option value="hi">🇮🇳 हिन्दी</option>
+                        <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
+                    </select>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html" data-i18n="nav_home">Back to Home</a></li>
+                    </ul>
+                </nav>
+                <div class="cart-icon" onclick="openCart()"
+                    style="cursor: pointer; display: flex; align-items: center;">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg> <span class="cart-count">0</span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -77,22 +95,17 @@
                 <!-- Sidebar Filters -->
                 <aside class="market-sidebar">
                     <div class="filter-group">
-                        <h3>Category</h3>
-                        <label><input type="checkbox"> Vermicompost</label>
-                        <label><input type="checkbox"> Liquid Fertilizers</label>
-                        <label><input type="checkbox" checked> Pest Repellents</label>
+                        <h3>Also Check Out</h3>
+                        <a href="vermicompost.html">Organic Vermicompost</a>
+                        <a href="jeevamrut.html">Organic Jeevamrut</a>
+                        <a href="brahmastra.html">Organic Brahmastra</a>
                     </div>
                     <div class="filter-group">
-                        <h3>Volume</h3>
-                        <label><input type="checkbox"> 1 Liter</label>
-                        <label><input type="checkbox"> 5 Liters</label>
-                        <label><input type="checkbox"> 10 Liters</label>
-                        <label><input type="checkbox"> 50 Liters</label>
-                    </div>
-                    <div class="filter-group">
-                        <h3>Customer Ratings</h3>
-                        <label><input type="radio" name="rating"> 4&#9733; & above</label>
-                        <label><input type="radio" name="rating"> 3&#9733; & above</label>
+                        <h3>Need Expert Advice?</h3>
+                        <p>Not sure which product matches your crop's symptoms?</p>
+                        <a href="index.html#crop-doctor" class="btn btn-secondary"
+                            style="width: 100%; text-align: center; display: block; padding: 0.8rem; font-size: 0.9rem;">Launch
+                            Crop Doctor</a>
                     </div>
                 </aside>
 
@@ -108,13 +121,14 @@
                             <h3>Organic Nimastra - 1 Liter Spray</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;180</span>
-                                <span class="original-price">&#8377;250</span>
-                                <span class="discount">28% off</span>
+                                <span class="current-price">&#8377;100</span>
+                                <span class="original-price">&#8377;180</span>
+                                <span class="discount">44% off</span>
                             </div>
                             <p class="delivery-info">FREE delivery by <strong>Tomorrow</strong></p>
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Nimastra - 1 Liter', 100)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>
@@ -131,15 +145,18 @@
                             <h3>Organic Nimastra - 5 Liter Can</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;800</span>
-                                <span class="original-price">&#8377;1000</span>
-                                <span class="discount">20% off</span>
+                                <span class="current-price">&#8377;480</span>
+                                <span class="original-price">&#8377;800</span>
+                                <span class="discount">40% off</span>
                             </div>
                             <p class="delivery-info">FREE delivery by <strong>Tomorrow</strong></p>
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Nimastra - 5 Liters', 480)" data-i18n="btn_add_cart">Add
+                                    to Cart</button>
                                 <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')"
+                                    data-i18n="btn_buy_now">Buy
                                     Now</button>
                             </div>
                         </div>
@@ -155,13 +172,14 @@
                             <h3>Organic Nimastra - 10 Liter Drum</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;1,500</span>
-                                <span class="original-price">&#8377;2,200</span>
-                                <span class="discount">32% off</span>
+                                <span class="current-price">&#8377;900</span>
+                                <span class="original-price">&#8377;1,500</span>
+                                <span class="discount">40% off</span>
                             </div>
                             <p class="delivery-info">FREE delivery within <strong>2 Days</strong></p>
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Nimastra - 10 Liters', 900)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>
@@ -179,13 +197,14 @@
                             <h3>Organic Nimastra - 50 Liter Barrel</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;6,000</span>
-                                <span class="original-price">&#8377;8,500</span>
+                                <span class="current-price">&#8377;4,200</span>
+                                <span class="original-price">&#8377;6,000</span>
                                 <span class="discount">30% off</span>
                             </div>
                             <p class="delivery-info">Special Farm Delivery</p>
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Nimastra - 50 Liters', 4200)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>

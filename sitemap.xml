@@ -2,27 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://ofkff.netlify.app/</loc>
-        <lastmod>2026-01-05</lastmod>
+        <lastmod>2026-01-06</lastmod>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://ofkff.netlify.app/index.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://ofkff.netlify.app/vermicompost.html</loc>
+        <lastmod>2026-01-06</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ofkff.netlify.app/jeevamrut.html</loc>
+        <lastmod>2026-01-06</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ofkff.netlify.app/nimastra.html</loc>
+        <lastmod>2026-01-06</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ofkff.netlify.app/brahmastra.html</loc>
+        <lastmod>2026-01-06</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 </urlset>

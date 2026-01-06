@@ -27,11 +27,29 @@
                 <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
                 OFKFF
             </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Back to Home</a></li>
-                </ul>
-            </nav>
+            <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem;">
+                <div class="lang-switch">
+                    <select id="langSelect" onchange="changeLanguage(this.value)"
+                        style="padding: 0.3rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;">
+                        <option value="en">🇺🇸 English</option>
+                        <option value="hi">🇮🇳 हिन्दी</option>
+                        <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
+                    </select>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html" data-i18n="nav_home">Back to Home</a></li>
+                    </ul>
+                </nav>
+                <div class="cart-icon" onclick="openCart()"
+                    style="cursor: pointer; display: flex; align-items: center;">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg> <span class="cart-count">0</span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -77,22 +95,17 @@
                 <!-- Sidebar Filters -->
                 <aside class="market-sidebar">
                     <div class="filter-group">
-                        <h3>Category</h3>
-                        <label><input type="checkbox" checked> Vermicompost</label>
-                        <label><input type="checkbox"> Liquid Fertilizers</label>
-                        <label><input type="checkbox"> Pest Repellents</label>
+                        <h3>Also Check Out</h3>
+                        <a href="jeevamrut.html">Organic Jeevamrut</a>
+                        <a href="nimastra.html">Organic Nimastra</a>
+                        <a href="brahmastra.html">Organic Brahmastra</a>
                     </div>
                     <div class="filter-group">
-                        <h3>Weight</h3>
-                        <label><input type="checkbox"> 1 Kg</label>
-                        <label><input type="checkbox"> 5 Kg</label>
-                        <label><input type="checkbox"> 10 Kg</label>
-                        <label><input type="checkbox"> 50 Kg</label>
-                    </div>
-                    <div class="filter-group">
-                        <h3>Customer Ratings</h3>
-                        <label><input type="radio" name="rating"> 4&#9733; & above</label>
-                        <label><input type="radio" name="rating"> 3&#9733; & above</label>
+                        <h3>Need Expert Advice?</h3>
+                        <p>Not sure which product matches your crop's symptoms?</p>
+                        <a href="index.html#crop-doctor" class="btn btn-secondary"
+                            style="width: 100%; text-align: center; display: block; padding: 0.8rem; font-size: 0.9rem;">Launch
+                            Crop Doctor</a>
                     </div>
                 </aside>
 
@@ -108,13 +121,14 @@
                             <h3>Organic Vermicompost - 1 Kg Pack</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;50</span>
-                                <span class="original-price">&#8377;80</span>
-                                <span class="discount">37% off</span>
+                                <span class="current-price">&#8377;20</span>
+                                <span class="original-price">&#8377;40</span>
+                                <span class="discount">50% off</span>
                             </div>
 
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Vermicompost - 1 Kg', 20)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>
@@ -131,15 +145,18 @@
                             <h3>Organic Vermicompost - 5 Kg Bag</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;200</span>
-                                <span class="original-price">&#8377;350</span>
-                                <span class="discount">42% off</span>
+                                <span class="current-price">&#8377;90</span>
+                                <span class="original-price">&#8377;150</span>
+                                <span class="discount">40% off</span>
                             </div>
 
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Vermicompost - 5 Kg', 90)" data-i18n="btn_add_cart">Add
+                                    to Cart</button>
                                 <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')"
+                                    data-i18n="btn_buy_now">Buy
                                     Now</button>
                             </div>
                         </div>
@@ -149,19 +166,21 @@
                     <div class="product-card-premium">
                         <div class="badge-organic">Certified Organic</div>
                         <div class="product-img-box">
-                            <img src="assets/vermi-10kg.png" alt="10kg Vermicompost">
+                            <img src="assets/vermi-10kg.png" alt="10kg Vermicompost" width="200" height="200"
+                                loading="lazy">
                         </div>
                         <div class="product-details">
                             <h3>Organic Vermicompost - 10 Kg Sack</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;350</span>
-                                <span class="original-price">&#8377;600</span>
-                                <span class="discount">41% off</span>
+                                <span class="current-price">&#8377;170</span>
+                                <span class="original-price">&#8377;300</span>
+                                <span class="discount">43% off</span>
                             </div>
 
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Vermicompost - 10 Kg', 170)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>
@@ -173,19 +192,21 @@
                     <div class="product-card-premium">
 
                         <div class="product-img-box">
-                            <img src="assets/vermi-50kg.png" alt="50kg Vermicompost">
+                            <img src="assets/vermi-50kg.png" alt="50kg Vermicompost" width="200" height="200"
+                                loading="lazy">
                         </div>
                         <div class="product-details">
                             <h3>Organic Vermicompost - 50 Kg Bulk</h3>
 
                             <div class="price-block">
-                                <span class="current-price">&#8377;1,500</span>
-                                <span class="original-price">&#8377;2,500</span>
-                                <span class="discount">40% off</span>
+                                <span class="current-price">&#8377;800</span>
+                                <span class="original-price">&#8377;1,200</span>
+                                <span class="discount">33% off</span>
                             </div>
 
                             <div class="action-buttons">
-                                <button class="btn-action btn-add-cart" onclick="addToCart()">Add to Cart</button>
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Organic Vermicompost - 50 Kg', 800)">Add to Cart</button>
                                 <button class="btn-action btn-buy-now"
                                     onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
                                     Now</button>

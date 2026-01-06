@@ -79,6 +79,12 @@
                         <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
                     </select>
                 </div>
+                <!-- Theme Toggle -->
+                <button id="themeToggle" onclick="toggleTheme()"
+                    style="background:none; border:none; cursor:pointer; font-size:1.2rem; padding: 0.2rem; transition: transform 0.3s ease;"
+                    aria-label="Toggle Theme">
+                    🌙
+                </button>
                 <!-- Hamburger Menu Button -->
                 <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
                     <span></span>
@@ -99,7 +105,7 @@
                     <!-- Global Cart Icon -->
                     <div class="global-cart" onclick="openCart()">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24" style="margin-right: 0.5rem;">
+                            viewBox="0 0 24 24">
                             <circle cx="9" cy="21" r="1" />
                             <circle cx="20" cy="21" r="1" />
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
@@ -139,42 +145,51 @@
     <section id="problem" class="section section-light">
         <div class="container text-center">
             <h2 data-i18n="prob_title">Why We Need Change</h2>
-            <div class="grid grid-3 problem-grid snap-container">
-                <div class="card fade-in">
-                    <div class="icon-box">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <path d="M12 8v4"></path>
-                            <path d="M12 16h.01"></path>
-                        </svg>
+            <div class="scroll-hint-wrapper">
+                <div class="grid grid-3 problem-grid snap-container">
+                    <div class="card fade-in">
+                        <div class="icon-box">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M12 8v4"></path>
+                                <path d="M12 16h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="prob_soil">Soil Degradation</h3>
+                        <p data-i18n="prob_soil_desc">Chemical overuse is stripping the earth of its nutrients, leading
+                            to barren lands.</p>
                     </div>
-                    <h3>Soil Degradation</h3>
-                    <p>Chemical overuse is stripping the earth of its nutrients, leading to barren lands.</p>
+                    <div class="card fade-in">
+                        <div class="icon-box">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="prob_health">Health Risks</h3>
+                        <p data-i18n="prob_health_desc">Toxic residues in food are causing severe long-term health
+                            issues for consumers.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="icon-box">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="prob_cost">High Input Costs</h3>
+                        <p data-i18n="prob_cost_desc">Rising costs of fertilizers and pesticides are debt-trapping
+                            farmers.</p>
+                    </div>
                 </div>
-                <div class="card fade-in">
-                    <div class="icon-box">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                    </div>
-                    <h3>Health Risks</h3>
-                    <p>Toxic residues in food are causing severe long-term health issues for consumers.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="icon-box">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3>High Input Costs</h3>
-                    <p>Rising costs of fertilizers and pesticides are debt-trapping farmers.</p>
+                <div class="scroll-hint">
+                    <span>Swipe</span> &rarr;
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -185,39 +200,42 @@
             <p class="section-subtitle" style="margin-left: auto; margin-right: auto;" data-i18n="sol_subtitle">A
                 self-sustaining ecosystem for
                 complete plant nutrition and protection.</p>
-            <p
-                style="margin-top: -3rem; margin-bottom: 3rem; font-size: 0.9rem; color: var(--color-primary); font-weight: 500; opacity: 0.8; margin-left: auto; margin-right: auto;">
-                (Click on any component below to view details)
-            </p>
-            <div class="grid grid-2 solution-grid snap-container">
-                <a href="vermicompost.html#market" class="solution-card fade-in stagger-1">
-                    <span class="step-number">01</span>
-                    <h3>Vermicompost</h3>
-                    <div class="price-tag">Starts @ &#8377;40</div>
-                    <p>The "Black Gold" of agriculture. Enhances soil structure and fertility naturally.</p>
-                    <div class="btn-shop-sm">Shop Now &rarr;</div>
-                </a>
-                <a href="jeevamrut.html#market" class="solution-card fade-in stagger-2">
-                    <span class="step-number">02</span>
-                    <h3>Jeevamrut</h3>
-                    <div class="price-tag">Starts @ &#8377;150</div>
-                    <p>A microbial culture that acts as an immunity booster for plants and revitalizes soil life.</p>
-                    <div class="btn-shop-sm">Shop Now &rarr;</div>
-                </a>
-                <a href="nimastra.html#market" class="solution-card fade-in stagger-3">
-                    <span class="step-number">03</span>
-                    <h3>Nimastra</h3>
-                    <div class="price-tag">Starts @ &#8377;180</div>
-                    <p>A potent natural pest repellent derived from neem, protecting crops without toxicity.</p>
-                    <div class="btn-shop-sm">Shop Now &rarr;</div>
-                </a>
-                <a href="brahmastra.html#market" class="solution-card fade-in stagger-4">
-                    <span class="step-number">04</span>
-                    <h3>Brahmastra</h3>
-                    <div class="price-tag">Starts @ &#8377;250</div>
-                    <p>The ultimate defense against stubborn pests, sustaining crop health fundamentally.</p>
-                    <div class="btn-shop-sm">Shop Now &rarr;</div>
-                </a>
+
+            <div class="scroll-hint-wrapper">
+                <div class="grid grid-2 solution-grid snap-container">
+                    <a href="vermicompost.html#market" class="solution-card fade-in stagger-1">
+                        <span class="step-number">01</span>
+                        <h3>Vermicompost</h3>
+                        <div class="price-tag">Starts @ &#8377;20</div>
+                        <p>The "Black Gold" of agriculture. Enhances soil structure and fertility naturally.</p>
+                        <div class="btn-shop-sm">Shop Now &rarr;</div>
+                    </a>
+                    <a href="jeevamrut.html#market" class="solution-card fade-in stagger-2">
+                        <span class="step-number">02</span>
+                        <h3>Jeevamrut</h3>
+                        <div class="price-tag">Starts @ &#8377;80</div>
+                        <p>A microbial culture that acts as an immunity booster for plants and revitalizes soil life.
+                        </p>
+                        <div class="btn-shop-sm">Shop Now &rarr;</div>
+                    </a>
+                    <a href="nimastra.html#market" class="solution-card fade-in stagger-3">
+                        <span class="step-number">03</span>
+                        <h3>Nimastra</h3>
+                        <div class="price-tag">Starts @ &#8377;100</div>
+                        <p>A potent natural pest repellent derived from neem, protecting crops without toxicity.</p>
+                        <div class="btn-shop-sm">Shop Now &rarr;</div>
+                    </a>
+                    <a href="brahmastra.html#market" class="solution-card fade-in stagger-4">
+                        <span class="step-number">04</span>
+                        <h3>Brahmastra</h3>
+                        <div class="price-tag">Starts @ &#8377;150</div>
+                        <p>The ultimate defense against stubborn pests, sustaining crop health fundamentally.</p>
+                        <div class="btn-shop-sm">Shop Now &rarr;</div>
+                    </a>
+                </div>
+                <div class="scroll-hint">
+                    <span>Swipe</span> &rarr;
+                </div>
             </div>
         </div>
     </section>
@@ -277,50 +295,51 @@
         </div>
     </section>
 
-    </a>
-    </div>
-    </div>
-    </section>
+
 
     <!-- Smart Farm Estimator (Calculator) -->
     <section id="calculator" class="section section-light"
         style="background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);">
         <div class="container">
             <div class="text-center" style="margin-bottom: 3rem;">
-                <h2>Smart Farm Estimator</h2>
-                <p class="section-subtitle">Calculate exactly what your farm needs for a chemical-free season.</p>
+                <h2 data-i18n="calc_title">Smart Farm Estimator</h2>
+                <p class="section-subtitle" data-i18n="calc_subtitle">Calculate exactly what your farm needs for a
+                    chemical-free season.</p>
             </div>
 
             <div class="calculator-box fade-in">
                 <div class="calc-inputs" style="flex: 1; padding: 2rem;">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);">Farm Details</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);" data-i18n="calc_farm_details">Farm
+                        Details</h3>
 
                     <div class="input-group">
-                        <label>Select Crop Type</label>
+                        <label data-i18n="calc_crop_type">Select Crop Type</label>
                         <select id="cropType">
-                            <option value="paddy">Paddy / Wheat / Cereals</option>
-                            <option value="veggies">Vegetables / Commercial Crops</option>
-                            <option value="fruits">Fruit Orchards (Mango, Coconut)</option>
+                            <option value="paddy" data-i18n="calc_opt_paddy">Paddy / Wheat / Cereals</option>
+                            <option value="veggies" data-i18n="calc_opt_veggies">Vegetables / Commercial Crops</option>
+                            <option value="fruits" data-i18n="calc_opt_fruits">Fruit Orchards (Mango, Coconut)</option>
                         </select>
                     </div>
 
                     <div class="input-group">
-                        <label>Land Size (in Acres)</label>
+                        <label data-i18n="calc_land_size">Land Size (in Acres)</label>
                         <div class="range-wrap">
                             <input type="number" id="landSize" value="1" min="0.5" max="100" step="0.5">
                             <span class="unit">Acres</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" onclick="generateQuote()" style="width: 100%; margin-top: 1rem;">Get
-                        Custom Quote for this Kit</button>
-                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">*Estimates based on standard organic
+
+                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;" data-i18n="calc_disclaimer">*Estimates
+                        based on standard organic
                         farming protocols (TNAU/NCOF).</p>
                 </div>
 
                 <div class="calc-results"
                     style="flex: 1.2; background: var(--color-bg-dark); color: white; padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-bottom: 2rem; color: white;">Your Season Kit</h3>
+                    <h3 style="margin-bottom: 2rem; color: white;" data-i18n="calc_season_kit">Your Season Kit</h3>
+
+
 
                     <div class="result-grid">
                         <div class="result-item">
@@ -328,30 +347,35 @@
                             <div class="value-box">
                                 <span id="res-vermi" class="count-anim">1000</span> <span class="unit">kg</span>
                             </div>
-                            <span class="sub-text">Soil Nutrition</span>
+                            <span class="sub-text" data-i18n="calc_soil_nutrition">Soil Nutrition</span>
                         </div>
                         <div class="result-item">
                             <span class="label">Jeevamrut</span>
                             <div class="value-box">
                                 <span id="res-jeeva" class="count-anim">200</span> <span class="unit">L</span>
                             </div>
-                            <span class="sub-text">Immunity Booster (Monthly)</span>
+                            <span class="sub-text" data-i18n="calc_immunity">Immunity Booster (Monthly)</span>
                         </div>
                         <div class="result-item">
                             <span class="label">Nimastra</span>
                             <div class="value-box">
                                 <span id="res-nima" class="count-anim">100</span> <span class="unit">L</span>
                             </div>
-                            <span class="sub-text">Pest Repellent</span>
+                            <span class="sub-text" data-i18n="calc_pest_repel">Pest Repellent</span>
                         </div>
                         <div class="result-item">
                             <span class="label">Brahmastra</span>
                             <div class="value-box">
                                 <span id="res-brahma" class="count-anim">10</span> <span class="unit">L</span>
                             </div>
-                            <span class="sub-text">Critical Defense</span>
+                            <span class="sub-text" data-i18n="calc_defense">Critical Defense</span>
                         </div>
+
                     </div>
+
+                    <button class="btn btn-primary" onclick="generateQuote()" style="width: 100%; margin-top: 1.5rem;"
+                        data-i18n="calc_quote_btn">Get
+                        Custom Quote for this Kit</button>
                 </div>
             </div>
         </div>
@@ -360,30 +384,35 @@
     <!-- How It Works -->
     <section id="how-it-works" class="section section-light">
         <div class="container text-center">
-            <h2>How It Works</h2>
-            <div class="process-flow fade-in">
-                <div class="process-step">
-                    <div class="circle">1</div>
-                    <h4>Production</h4>
-                    <p>Setting up the 4 components.</p>
+            <h2 data-i18n="work_title">How It Works</h2>
+            <div class="scroll-hint-wrapper">
+                <div class="process-flow fade-in snap-container">
+                    <div class="process-step">
+                        <div class="circle">1</div>
+                        <h4 data-i18n="work_step1_title">Production</h4>
+                        <p data-i18n="work_step1_desc">Setting up the 4 components.</p>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="process-step">
+                        <div class="circle">2</div>
+                        <h4 data-i18n="work_step2_title">Demo Field</h4>
+                        <p data-i18n="work_step2_desc">Showcasing results live.</p>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="process-step">
+                        <div class="circle">3</div>
+                        <h4 data-i18n="work_step3_title">Training</h4>
+                        <p data-i18n="work_step3_desc">Educating fellow farmers.</p>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="process-step">
+                        <div class="circle">4</div>
+                        <h4 data-i18n="work_step4_title">Selling</h4>
+                        <p data-i18n="work_step4_desc">Market access & profit.</p>
+                    </div>
                 </div>
-                <div class="connector"></div>
-                <div class="process-step">
-                    <div class="circle">2</div>
-                    <h4>Demo Field</h4>
-                    <p>Showcasing results live.</p>
-                </div>
-                <div class="connector"></div>
-                <div class="process-step">
-                    <div class="circle">3</div>
-                    <h4>Training</h4>
-                    <p>Educating fellow farmers.</p>
-                </div>
-                <div class="connector"></div>
-                <div class="process-step">
-                    <div class="circle">4</div>
-                    <h4>Selling</h4>
-                    <p>Market access & profit.</p>
+                <div class="scroll-hint">
+                    <span>Swipe</span> &rarr;
                 </div>
             </div>
         </div>
@@ -418,28 +447,28 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Reduced farming costs by up to <strong>60%</strong></span>
+                            <span data-i18n="impact_cost_red">Reduced farming costs by up to <strong>60%</strong></span>
                         </li>
                         <li>
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Chemical-free, nutrient-rich food supply</span>
+                            <span data-i18n="impact_chem_free">Chemical-free, nutrient-rich food supply</span>
                         </li>
                         <li>
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Regenerated soil health for future generations</span>
+                            <span data-i18n="impact_regen">Regenerated soil health for future generations</span>
                         </li>
                         <li>
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>New employment opportunities in rural areas</span>
+                            <span data-i18n="impact_employ">New employment opportunities in rural areas</span>
                         </li>
                     </ul>
                 </div>
@@ -454,8 +483,9 @@
     <!-- Prototype / Demo -->
     <section id="prototype" class="section section-light">
         <div class="container text-center">
-            <h2>The Model in Action</h2>
-            <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Our pilot setup
+            <h2 data-i18n="proto_title">The Model in Action</h2>
+            <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;"
+                data-i18n="proto_bottom_desc">Our pilot setup
                 demonstrates how these components integrate seamlessly into a standard farm layout.</p>
             <div class="prototype-showcase fade-in">
                 <img src="assets/model-action.jpg" alt="Complete Organic Farming Kit Model Diagram"
@@ -468,34 +498,54 @@
     <!-- Gallery -->
     <section id="gallery" class="section">
         <div class="container text-center">
-            <h2>Gallery</h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Snapshots from our journey,
+            <h2 data-i18n="gal_title">Gallery</h2>
+            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;" data-i18n="gal_desc">Snapshots
+                from our journey,
                 training sessions, and success stories.</p>
-            <div class="gallery-grid fade-in">
-                <!-- Gallery 1: User uploaded photo -->
-                <div class="gallery-item">
-                    <img src="assets/gallery-1.jpg" alt="Organic Farming Kit Demo"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+
+            <!-- Gallery Filters -->
+            <div class="gallery-filters fade-in">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+                <button class="filter-btn" data-filter="field" data-i18n="filter_field">Field Work</button>
+                <button class="filter-btn" data-filter="training" data-i18n="filter_train">Training</button>
+                <button class="filter-btn" data-filter="product" data-i18n="filter_prod">Product</button>
+            </div>
+
+            <div class="scroll-hint-wrapper">
+                <div class="gallery-grid fade-in snap-container">
+                    <!-- Gallery 1: Product -->
+                    <div class="gallery-item" data-category="product">
+                        <img src="assets/gallery-1.jpg" alt="Organic Farming Kit Demo" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
+                    <!-- Gallery 2: Field -->
+                    <div class="gallery-item" data-category="field">
+                        <img src="assets/gallery-2.jpg" alt="Field Inspection" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
+                    <!-- Gallery 3: Field -->
+                    <div class="gallery-item" data-category="field">
+                        <img src="assets/gallery-3.jpg" alt="Compost Handful" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
+                    <!-- Gallery 4: Product -->
+                    <div class="gallery-item" data-category="product">
+                        <img src="assets/gallery-4.jpg" alt="Storage Barrels" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
+                    <!-- Gallery 5: Training -->
+                    <div class="gallery-item" data-category="training">
+                        <img src="assets/gallery-5.jpg" alt="Community Workshop" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
+                    <!-- Gallery 6: Training -->
+                    <div class="gallery-item" data-category="training">
+                        <img src="assets/gallery-6.jpg" alt="Farmer Training" width="400" height="300"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery-2.jpg" alt="Field Inspection"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery-3.jpg" alt="Compost Handful"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery-4.jpg" alt="Storage Barrels"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery-5.jpg" alt="Community Workshop"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery-6.jpg" alt="Farmer Training"
-                        style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                <div class="scroll-hint">
+                    <span>Swipe</span> &rarr;
                 </div>
             </div>
         </div>
@@ -511,11 +561,13 @@
                     revolution. This is not just a project; it's a proven blueprint for sustainable rural economies. Our
                     mission is to bridge the gap between traditional wisdom and modern scalability.</p>
 
-                <h2>About the Innovator</h2>
+                <h2 data-i18n="innov_title">About the Innovator</h2>
                 <img src="assets/innovator.png" alt="Pankaj Kumar Barik" class="innovator-img fade-in floating"
                     loading="lazy" decoding="async">
-                <h3 style="margin-top: 1rem; color: var(--color-primary);">Pankaj Kumar Barik</h3>
-                <p>A student innovator focused on sustainable and affordable farming solutions. My work centers on
+                <h3 style="margin-top: 1rem; color: var(--color-primary);" data-i18n="innov_name">Pankaj Kumar Barik
+                </h3>
+                <p data-i18n="innov_desc">A student innovator focused on sustainable and affordable farming solutions.
+                    My work centers on
                     reducing chemical dependency in agriculture through practical, logically adaptable organic methods.
                     The complete organic farming kit reflects a vision of farmer self reliance, soil health and scalable
                     rural impact.</p>
@@ -527,55 +579,122 @@
     <section id="faq" class="section section-light">
         <div class="container" style="max-width: 800px;">
             <div class="text-center" style="margin-bottom: 3rem;">
-                <h2>Frequently Asked Questions</h2>
-                <p>Common questions about the Organic Farming Kit.</p>
+                <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+                <p data-i18n="faq_subtitle">Common questions about the Organic Farming Kit.</p>
             </div>
 
             <div class="accordion">
+                <!-- Q1: Transition Info -->
                 <div class="accordion-item fade-in">
                     <button class="accordion-header">
-                        Can I use this kit for any crop?
+                        <span data-i18n="faq_q1">How long does the transition to organic take?</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>Yes! The kit is universal. While the dosage changes slightly for fruit orchards vs. seasonal
-                            vegetables, the core components (Nutrients, Immunity, Pest Control) work for all plant
-                            types.</p>
+                        <p data-i18n="faq_a1">It typically takes <strong>2-3 years</strong> for soil to fully regenerate
+                            its microbial
+                            health. We recommend a phased approach: reduce chemical inputs by 50% in Year 1, and aim for
+                            100% organic by Year 2.</p>
                     </div>
                 </div>
 
+                <!-- Q2: Yield Concerns -->
                 <div class="accordion-item fade-in">
                     <button class="accordion-header">
-                        How often should I apply Jeevamrut?
+                        <span data-i18n="faq_q2">Will my yield drop if I stop using chemicals?</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>For best results, apply Jeevamrut once every 15-20 days. It revitalizes the soil microbes
-                            which die off naturally over time.</p>
+                        <p data-i18n="faq_a2">A minor dip (5-10%) is possible in the first year as the soil ecosystem
+                            recovers. However, by
+                            Year 3, yields typically stabilize or exceed conventional levels, while your input costs
+                            drop
+                            by up to <strong>60%</strong>, leading to higher net profit.</p>
                     </div>
                 </div>
 
+                <!-- Q3: Nimastra Action -->
                 <div class="accordion-item fade-in">
                     <button class="accordion-header">
-                        Is it compatible with chemical fertilizers?
+                        <span data-i18n="faq_q3">Is Nimastra as fast as chemical pesticides?</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>We recommend a transition period. You can reduce chemical inputs by 50% in the first year
-                            while introducing these organic components, then go 100% organic by year 2 for the best soil
-                            regeneration.</p>
+                        <p data-i18n="faq_a3">Chemicals kill instantly but damage the ecosystem. Nimastra works
+                            differently: it repels
+                            pests, makes the plant bitter, and disrupts their breeding cycle. For best results, use it
+                            <strong>preventively every 10-15 days</strong> rather than waiting for an infestation.
+                        </p>
                     </div>
                 </div>
 
-                <div class="accordion-item fade-in">
-                    <button class="accordion-header">
-                        Do you offer bulk discounts for FPOs?
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Absolutely. We work with Farmer Producer Organizations (FPOs) to provide kits at wholesale
-                            rates. Please use the contact form below to request a bulk quote.</p>
+                <!-- Q4-Q7: Hidden by default -->
+                <div class="faq-hidden-content" style="display: none;">
+                    <!-- Q4: Shelf Life -->
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q4">What is the shelf life of Jeevamrut?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a4">Since Jeevamrut contains billions of live active microbes, it is most
+                                effective when used
+                                within <strong>7-12 days</strong> of preparation. After this period, the microbial count
+                                begins to decline naturally.</p>
+                        </div>
                     </div>
+
+                    <!-- Q5: Compatibility -->
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q5">Can I mix these with chemical fertilizers?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a5"><strong>No.</strong> Chemical fertilizers and strong pesticides will
+                                kill the beneficial
+                                microbes (bacteria, fungi) present in the organic kit. If you are transitioning,
+                                maintain at
+                                least a <strong>7-day gap</strong> between applying chemical inputs and organic
+                                bio-inputs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Q6: Dosage -->
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q6">How much Vermicompost is needed per acre?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a6">The standard TNAU recommendation is <strong>1000-2000 kg (1-2 tons)
+                                    per acre</strong> for
+                                field crops like Paddy and Wheat. For commercial vegetable crops, the dosage may go up
+                                to
+                                3000-4000 kg depending on soil health.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q7: Business (FPO) -->
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q7">Do you offer bulk discounts for FPOs?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a7">Absolutely. We work with Farmer Producer Organizations (FPOs) to
+                                provide kits at
+                                wholesale
+                                rates. Please use the contact form below to request a bulk quote.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 1.5rem;">
+                    <button id="toggle-faq-btn" class="btn btn-secondary" onclick="toggleFaq()"
+                        data-i18n="faq_view_more">View All
+                        Questions</button>
                 </div>
             </div>
         </div>
@@ -614,7 +733,7 @@
                 <div class="loc-map">
                     <a href="https://maps.app.goo.gl/V6ujrtfFux4NQd8AA" target="_blank" class="map-link-wrapper">
                         <img src="assets/location-map.png" alt="Production Unit Map Location" class="map-preview"
-                            loading="lazy" decoding="async">
+                            width="600" height="400" loading="lazy" decoding="async">
                         <div class="map-overlay">
                             <span class="view-map-btn">View on Google Maps</span>
                         </div>
