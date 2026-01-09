@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - Authentic Organic Farming Inputs | OFKFF</title>
+    <meta name="description"
+        content="Browse our premium organic farming inputs. Vermicompost, Jeevamrut, Nimastra, and Brahmastra directly from the source.">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Custom styles moved to style.css -->
+</head>
+
+<body class="marketplace-page">
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"
+                style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
+                OFKFF
+            </a>
+            <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem;">
+                <div class="lang-switch">
+                    <select id="langSelect" onchange="changeLanguage(this.value)"
+                        style="padding: 0.3rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;">
+                        <option value="en">🇺🇸 English</option>
+                        <option value="hi">🇮🇳 हिन्दी</option>
+                        <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
+                    </select>
+                </div>
+                <button id="themeToggle" onclick="toggleTheme()"
+                    style="background:none; border:none; cursor:pointer; font-size:1.2rem; padding: 0.2rem;"
+                    aria-label="Toggle Theme">
+                    🌙
+                </button>
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="desktop-nav" style="display: flex; align-items: center; gap: 2rem;">
+                    <ul class="nav-links">
+                        <li><a href="index.html#problem" data-i18n="nav_problem">The Problem</a></li>
+                        <li><a href="index.html#solution" data-i18n="nav_solution">The Solution</a></li>
+
+                        <li><a href="index.html#how-it-works" data-i18n="nav_works">How It Works</a></li>
+                        <li><a href="index.html#impact" data-i18n="nav_impact">Impact</a></li>
+                        <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+                        <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                    <div class="global-cart" onclick="openCart()">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg> <span class="cart-count">0</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-content">
+            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html#problem" onclick="toggleMobileMenu()" data-i18n="nav_problem">The
+                        Problem</a></li>
+                <li><a href="index.html#solution" onclick="toggleMobileMenu()" data-i18n="nav_solution">The
+                        Solution</a></li>
+
+                <li><a href="index.html#how-it-works" onclick="toggleMobileMenu()" data-i18n="nav_works">How It
+                        Works</a></li>
+                <li><a href="index.html#impact" onclick="toggleMobileMenu()" data-i18n="nav_impact">Impact</a></li>
+                <li><a href="index.html#about" onclick="toggleMobileMenu()" data-i18n="nav_about">About</a></li>
+                <li><a href="index.html#contact" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </header>
+
+    <section class="market-hero">
+        <div class="container">
+            <h1>Organic Marketplace</h1>
+            <p>Premium inputs for a sustainable harvest.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="market-layout">
+            <!-- Sidebar -->
+            <aside class="market-sidebar">
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <a href="#soil">Soil Nutrition</a>
+                    <a href="#immunity">Plant Immunity</a>
+                    <a href="#pest">Pest Control</a>
+                </div>
+                <div class="filter-group">
+                    <h3>Need Expert Advice?</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Not sure what your crop needs? Use our crop
+                        doctor tool.</p>
+                    <a href="index.html#crop-doctor" class="btn btn-secondary"
+                        style="width: 100%; text-align: center; display: block; padding: 0.8rem; font-size: 0.9rem;">Launch
+                        Crop Doctor</a>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="market-products">
+
+                <!-- Category: Soil Nutrition -->
+                <h2 id="soil" class="market-category-title">Soil Nutrition</h2>
+                <div class="grid grid-2" style="gap: 2rem;">
+                    <!-- Vermicompost 1kg -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/vermi-1kg.png" alt="1kg Vermicompost" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Vermicompost - 1 Kg</h3>
+                            <p class="sub-text">Trial Pack for Home Gardens</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;20</span>
+                                <span class="original-price">&#8377;40</span>
+                                <span class="discount">50% off</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Vermicompost 1Kg', 20)">Add
+                                    to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vermicompost 5kg -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/vermi-5kg.png" alt="5kg Vermicompost" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Vermicompost - 5 Kg</h3>
+                            <p class="sub-text">Standard Pack for Kitchen Gardens</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;90</span>
+                                <span class="original-price">&#8377;150</span>
+                                <span class="discount">40% off</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Vermicompost 5Kg', 90)">Add
+                                    to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vermicompost 10kg -->
+                    <div class="product-card-premium">
+                        <div class="badge-organic">Best Seller</div>
+                        <div class="product-img-box">
+                            <img src="assets/vermi-10kg.png" alt="10kg Vermicompost" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Vermicompost - 10 Kg</h3>
+                            <p class="sub-text">Value Pack for Small Farms</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;180</span>
+                                <span class="original-price">&#8377;300</span>
+                                <span class="discount">40% off</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Vermicompost 10Kg', 180)">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vermicompost 50kg -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/vermi-50kg.png" alt="50kg Vermicompost" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Vermicompost - 50 Kg</h3>
+                            <p class="sub-text">Bulk Pack for Acres</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;800</span>
+                                <span class="original-price">&#8377;1200</span>
+                                <span class="discount">33% off</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart"
+                                    onclick="addToCart('Vermicompost 50Kg', 800)">Add to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: Plant Immunity -->
+                <h2 id="immunity" class="market-category-title">Plant Immunity</h2>
+                <div class="grid grid-2" style="gap: 2rem;">
+                    <!-- Jeevamrut 1L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-1l.png" alt="Jeevamrut 1L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Jeevamrut - 1 L</h3>
+                            <p class="sub-text">Concentrated Culture</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;80</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Jeevamrut 1L', 80)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jeevamrut 5L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-5l.png" alt="Jeevamrut 5L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Jeevamrut - 5 L</h3>
+                            <p class="sub-text">Field Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;350</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Jeevamrut 5L', 350)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jeevamrut 10L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-10l.png" alt="Jeevamrut 10L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Jeevamrut - 10 L</h3>
+                            <p class="sub-text">Mid-Size Farm Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;650</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Jeevamrut 10L', 650)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jeevamrut 50L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/jeevamrut-50l.png" alt="Jeevamrut 50L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Jeevamrut - 50 L</h3>
+                            <p class="sub-text">Large Scale Supply</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;3000</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Jeevamrut 50L', 3000)">Add
+                                    to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: Pest Control -->
+                <h2 id="pest" class="market-category-title">Natural Pest Control</h2>
+                <div class="grid grid-2" style="gap: 2rem;">
+                    <!-- Nimastra 1L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/nimastra-1l.png" alt="Nimastra 1L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Nimastra - 1 L</h3>
+                            <p class="sub-text">Neem-based Repellent</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;100</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Nimastra 1L', 100)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nimastra 5L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/nimastra-5l.png" alt="Nimastra 5L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Nimastra - 5 L</h3>
+                            <p class="sub-text">Field Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;450</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Nimastra 5L', 450)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nimastra 10L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/nimastra-10l.png" alt="Nimastra 10L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Nimastra - 10 L</h3>
+                            <p class="sub-text">Mid-Size Farm Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;850</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Nimastra 10L', 850)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nimastra 50L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/nimastra-50l.png" alt="Nimastra 50L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Nimastra - 50 L</h3>
+                            <p class="sub-text">Bulk Supply</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;4000</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Nimastra 50L', 4000)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brahmastra 1L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/brahmastra-1l.png" alt="Brahmastra 1L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Brahmastra - 1 L</h3>
+                            <p class="sub-text">Advanced Pest Defense</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;150</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Brahmastra 1L', 150)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brahmastra 5L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/brahmastra-5l.png" alt="Brahmastra 5L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Brahmastra - 5 L</h3>
+                            <p class="sub-text">Field Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;700</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Brahmastra 5L', 700)">Add to
+                                    Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brahmastra 10L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/brahmastra-10l.png" alt="Brahmastra 10L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Brahmastra - 10 L</h3>
+                            <p class="sub-text">Mid-Size Farm Pack</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;1350</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Brahmastra 10L', 1350)">Add
+                                    to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brahmastra 50L -->
+                    <div class="product-card-premium">
+                        <div class="product-img-box">
+                            <img src="assets/brahmastra-50l.png" alt="Brahmastra 50L" style="width:100%; height:auto;">
+                        </div>
+                        <div class="product-details">
+                            <h3>Brahmastra - 50 L</h3>
+                            <p class="sub-text">Bulk Supply</p>
+                            <div class="price-block">
+                                <span class="current-price">&#8377;6500</span>
+                            </div>
+                            <div class="action-buttons" style="margin-top: 1rem;">
+                                <button class="btn-action btn-add-cart" onclick="addToCart('Brahmastra 50L', 6500)">Add
+                                    to Cart</button>
+                                <button class="btn-action btn-buy-now"
+                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OFKFF. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

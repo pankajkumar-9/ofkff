@@ -25,7 +25,7 @@
     <meta property="twitter:description" content="Grow naturally with our complete organic farming solutions.">
     <meta property="twitter:image" content="assets/logo.png">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="icon" href="assets/logo.png" type="image/x-icon">
     <link rel="canonical" href="https://ofkff.netlify.app/">
 
@@ -61,28 +61,26 @@
     </script>
 </head>
 
-<body>
+<body class="jungle-theme">
+    <canvas id="bg-canvas"></canvas>
 
     <!-- Header -->
     <header>
-        <div class="container">
-            <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" class="header-branding">
+                <img src="assets/logo.png" alt="OFKFF Logo">
                 OFKFF
             </a>
-            <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem;">
-                <div class="lang-switch">
-                    <select id="langSelect" onchange="changeLanguage(this.value)"
-                        style="padding: 0.3rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;">
+            <div class="header-controls">
+                <div class="lang-select-wrapper">
+                    <select id="langSelect" onchange="changeLanguage(this.value)">
                         <option value="en">🇺🇸 English</option>
                         <option value="hi">🇮🇳 हिन्दी</option>
                         <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
                     </select>
                 </div>
                 <!-- Theme Toggle -->
-                <button id="themeToggle" onclick="toggleTheme()"
-                    style="background:none; border:none; cursor:pointer; font-size:1.2rem; padding: 0.2rem; transition: transform 0.3s ease;"
-                    aria-label="Toggle Theme">
+                <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
                     🌙
                 </button>
                 <!-- Hamburger Menu Button -->
@@ -134,9 +132,16 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="gradient-text" data-i18n="hero_title">OFKFF: Organic Farming Kit For Farmers</h1>
-                <p data-i18n="hero_desc">A simple, low-cost solution for chemical-free and sustainable farming</p>
-                <a href="#solution" class="btn btn-primary" data-i18n="hero_btn">Explore the Model</a>
+                <h1 class="gradient-text anim-on-scroll anim-fade-up" data-i18n="hero_title">OFKFF: Organic Farming Kit
+                    For Farmers</h1>
+                <p class="anim-on-scroll anim-fade-up delay-200" data-i18n="hero_desc">Empowering farmers with 100%
+                    organic, low-cost, and self-sustainable farming solutions.
+                    Say goodbye to chemicals and hello to a healthier future.</p>
+                <div class="hero-buttons anim-on-scroll anim-fade-up delay-400">
+                    <a href="https://forms.gle/Aht1BTsPW9bXUKKX6" target="_blank" class="btn btn-secondary glass"
+                        data-i18n="shop_now">Connect With Us</a>
+                    <a href="#solution" class="btn btn-primary" data-i18n="hero_btn">Explore the Model</a>
+                </div>
             </div>
         </div>
     </section>
@@ -146,43 +151,39 @@
         <div class="container text-center">
             <h2 data-i18n="prob_title">Why We Need Change</h2>
             <div class="scroll-hint-wrapper">
-                <div class="grid grid-3 problem-grid snap-container">
-                    <div class="card fade-in">
+                <div class="grid grid-3 problem-grid snap-container anim-stagger-container">
+                    <div class="card anim-on-scroll anim-fade-up">
                         <div class="icon-box">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                <path d="M12 8v4"></path>
-                                <path d="M12 16h.01"></path>
+                                stroke-width="2">
+                                <path d="M2 22h20M12 2v20M2 12h20" />
                             </svg>
                         </div>
                         <h3 data-i18n="prob_soil">Soil Degradation</h3>
                         <p data-i18n="prob_soil_desc">Chemical overuse is stripping the earth of its nutrients, leading
                             to barren lands.</p>
                     </div>
-                    <div class="card fade-in">
+                    <div class="card anim-on-scroll anim-fade-up">
                         <div class="icon-box">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                             </svg>
                         </div>
-                        <h3 data-i18n="prob_health">Health Risks</h3>
+                        <h3 data-i18n="prob_health">Health Crisis</h3>
                         <p data-i18n="prob_health_desc">Toxic residues in food are causing severe long-term health
                             issues for consumers.</p>
                     </div>
-                    <div class="card fade-in">
+                    <div class="card anim-on-scroll anim-fade-up">
                         <div class="icon-box">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="1" x2="12" y2="23"></line>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                             </svg>
                         </div>
-                        <h3 data-i18n="prob_cost">High Input Costs</h3>
-                        <p data-i18n="prob_cost_desc">Rising costs of fertilizers and pesticides are debt-trapping
-                            farmers.</p>
+                        <h3 data-i18n="prob_cost">Rising Costs</h3>
+                        <p data-i18n="prob_cost_desc">Farmers remain trapped in debt cycles due to expensive
+                            fertilizers and pesticides.</p>
                     </div>
                 </div>
                 <div class="scroll-hint">
@@ -190,51 +191,126 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- The Solution -->
-    <section id="solution" class="section">
+    <!-- The Solution -->
+    <section id="solution" class="section" style="padding-bottom: 10rem; position: relative; z-index: 1;">
         <div class="container text-center">
-            <h2 data-i18n="sol_title">The 4-Component Solution</h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;" data-i18n="sol_subtitle">A
+            <h2 class="anim-on-scroll anim-fade-up" data-i18n="sol_title">The 4-Component Solution</h2>
+            <p class="section-subtitle anim-on-scroll anim-fade-up delay-200"
+                style="margin-left: auto; margin-right: auto;" data-i18n="sol_subtitle">A
                 self-sustaining ecosystem for
                 complete plant nutrition and protection.</p>
 
-            <div class="scroll-hint-wrapper">
-                <div class="grid grid-2 solution-grid snap-container">
-                    <a href="vermicompost.html#market" class="solution-card fade-in stagger-1">
-                        <span class="step-number">01</span>
-                        <h3>Vermicompost</h3>
-                        <div class="price-tag">Starts @ &#8377;20</div>
-                        <p>The "Black Gold" of agriculture. Enhances soil structure and fertility naturally.</p>
-                        <div class="btn-shop-sm">Shop Now &rarr;</div>
-                    </a>
-                    <a href="jeevamrut.html#market" class="solution-card fade-in stagger-2">
-                        <span class="step-number">02</span>
-                        <h3>Jeevamrut</h3>
-                        <div class="price-tag">Starts @ &#8377;80</div>
-                        <p>A microbial culture that acts as an immunity booster for plants and revitalizes soil life.
-                        </p>
-                        <div class="btn-shop-sm">Shop Now &rarr;</div>
-                    </a>
-                    <a href="nimastra.html#market" class="solution-card fade-in stagger-3">
-                        <span class="step-number">03</span>
-                        <h3>Nimastra</h3>
-                        <div class="price-tag">Starts @ &#8377;100</div>
-                        <p>A potent natural pest repellent derived from neem, protecting crops without toxicity.</p>
-                        <div class="btn-shop-sm">Shop Now &rarr;</div>
-                    </a>
-                    <a href="brahmastra.html#market" class="solution-card fade-in stagger-4">
-                        <span class="step-number">04</span>
-                        <h3>Brahmastra</h3>
-                        <div class="price-tag">Starts @ &#8377;150</div>
-                        <p>The ultimate defense against stubborn pests, sustaining crop health fundamentally.</p>
-                        <div class="btn-shop-sm">Shop Now &rarr;</div>
-                    </a>
+            <div class="grid grid-2 solution-grid snap-container anim-stagger-container" style="text-align: left;">
+                <div class="card anim-on-scroll anim-zoom-in" onclick="window.location.href='vermicompost.html'"
+                    style="cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <div>
+                                <span class="benefit-badge">Soil Superfood</span>
+                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">1. Soil Nutrition</h3>
+                            </div>
+                            <img src="assets/vermi-1kg.png" alt="Vermicompost" width="60" height="60"
+                                style="width:60px; height:auto; object-fit:contain;">
+                        </div>
+                        <p><strong>Foundation:</strong> Vermicompost</p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Just as a building needs a strong foundation,
+                            crops need healthy soil. We use Vermicompost to restore soil carbon and structure.</p>
+                    </div>
+                    <button class="card-cta-btn">Read the Science &rarr;</button>
                 </div>
-                <div class="scroll-hint">
-                    <span>Swipe</span> &rarr;
+
+                <div class="card anim-on-scroll anim-zoom-in" onclick="window.location.href='jeevamrut.html'"
+                    style="cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <div>
+                                <span class="benefit-badge">Plant Probiotic</span>
+                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">2. Plant Immunity</h3>
+                            </div>
+                            <img src="assets/jeevamrut-1l.png" alt="Jeevamrut" width="50" height="100"
+                                style="width:50px; height:auto; object-fit:contain;">
+                        </div>
+                        <p><strong>Booster:</strong> Jeevamrut</p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Prevention is better than cure. Jeevamrut
+                            introduces billions of beneficial microbes that act as a probiotic for plants.</p>
+                    </div>
+                    <button class="card-cta-btn">Read the Science &rarr;</button>
+                </div>
+
+                <div class="card anim-on-scroll anim-zoom-in" onclick="window.location.href='nimastra.html'"
+                    style="cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <div>
+                                <span class="benefit-badge">Natural Shield</span>
+                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">3. Pest Repellent</h3>
+                            </div>
+                            <img src="assets/nimastra-1l.png" alt="Nimastra" width="50" height="100"
+                                style="width:50px; height:auto; object-fit:contain;">
+                        </div>
+                        <p><strong>Shield:</strong> Nimastra</p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">We don't kill pests; we repel them. Nimastra
+                            makes the plants bitter and unpalatable, discouraging pests derived from neem.</p>
+                    </div>
+                    <button class="card-cta-btn">Read the Science &rarr;</button>
+                </div>
+
+                <div class="card anim-on-scroll anim-zoom-in" onclick="window.location.href='brahmastra.html'"
+                    style="cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <div>
+                                <span class="benefit-badge">Crisis Control</span>
+                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">4. Critical Defense</h3>
+                            </div>
+                            <img src="assets/brahmastra-1l.png" alt="Brahmastra" width="50" height="100"
+                                style="width:50px; height:auto; object-fit:contain;">
+                        </div>
+                        <p><strong>Weapon:</strong> Brahmastra</p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">For stubborn infestations, we deploy
+                            Brahmastra.
+                            It's a potent, last-resort organic measure to tackle larger pests.</p>
+                    </div>
+                    <button class="card-cta-btn">Read the Science &rarr;</button>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <span>Swipe</span> &rarr;
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Preview Section -->
+    <section id="market-preview" class="section" style="overflow: visible; padding-top: 0;">
+        <div class="container">
+            <!-- Premium Shop Banner -->
+            <div class="shop-banner-section">
+                <div class="shop-banner-bg-pattern"></div>
+                <div class="shop-banner-content">
+                    <div class="shop-banner-floating-img anim-on-scroll anim-fade-right">
+                        <div class="shop-banner-img-item"><img src="assets/vermi-1kg.png" alt="Soil"
+                                style="width:100%; height:auto;"></div>
+                        <div class="shop-banner-img-item"><img src="assets/jeevamrut-1l.png" alt="Immunity"
+                                style="width:100%; height:auto;"></div>
+                        <div class="shop-banner-img-item"><img src="assets/nimastra-1l.png" alt="Pest"
+                                style="width:100%; height:auto;"></div>
+                        <div class="shop-banner-img-item"><img src="assets/brahmastra-1l.png" alt="Defense"
+                                style="width:100%; height:auto;"></div>
+                    </div>
+                    <h2 class="shop-banner-title anim-on-scroll anim-fade-left">Complete Organic Transformation</h2>
+                    <p class="shop-banner-subtitle anim-on-scroll anim-fade-left delay-200">Get the full kit delivered
+                        to your doorstep. Start your journey to
+                        sustainable farming today.</p>
+                    <a href="marketplace.html" class="shop-banner-btn">
+                        <span>Enter Marketplace</span>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -244,11 +320,12 @@
     <section id="crop-doctor" class="section section-light"
         style="background: linear-gradient(to right, #ffffff, #e8f5e9);">
         <div class="container text-center">
-            <h2 data-i18n="doctor_title">Interactive Crop Doctor</h2>
-            <p class="section-subtitle" data-i18n="doctor_desc">Diagnose current issues and find the perfect organic
+            <h2 class="anim-on-scroll anim-fade-up" data-i18n="doctor_title">Interactive Crop Doctor</h2>
+            <p class="section-subtitle anim-on-scroll anim-fade-up delay-200" data-i18n="doctor_desc">Diagnose current
+                issues and find the perfect organic
                 solution.</p>
 
-            <div class="doctor-box fade-in">
+            <div class="doctor-box anim-on-scroll anim-zoom-in">
                 <div id="doctor-step-1" class="doctor-step">
                     <h3 data-i18n="doctor_q1">What is the problem?</h3>
                     <div class="grid grid-3 doctor-options">
@@ -302,12 +379,13 @@
         style="background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);">
         <div class="container">
             <div class="text-center" style="margin-bottom: 3rem;">
-                <h2 data-i18n="calc_title">Smart Farm Estimator</h2>
-                <p class="section-subtitle" data-i18n="calc_subtitle">Calculate exactly what your farm needs for a
+                <h2 class="anim-on-scroll anim-fade-up" data-i18n="calc_title">Smart Farm Estimator</h2>
+                <p class="section-subtitle anim-on-scroll anim-fade-up delay-200" data-i18n="calc_subtitle">Calculate
+                    exactly what your farm needs for a
                     chemical-free season.</p>
             </div>
 
-            <div class="calculator-box fade-in">
+            <div class="calculator-box anim-on-scroll anim-zoom-in">
                 <div class="calc-inputs" style="flex: 1; padding: 2rem;">
                     <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);" data-i18n="calc_farm_details">Farm
                         Details</h3>
@@ -384,28 +462,28 @@
     <!-- How It Works -->
     <section id="how-it-works" class="section section-light">
         <div class="container text-center">
-            <h2 data-i18n="work_title">How It Works</h2>
+            <h2 class="anim-on-scroll anim-fade-up" data-i18n="work_title">How It Works</h2>
             <div class="scroll-hint-wrapper">
-                <div class="process-flow fade-in snap-container">
-                    <div class="process-step">
+                <div class="process-flow anim-stagger-container snap-container">
+                    <div class="process-step anim-on-scroll anim-fade-up">
                         <div class="circle">1</div>
                         <h4 data-i18n="work_step1_title">Production</h4>
                         <p data-i18n="work_step1_desc">Setting up the 4 components.</p>
                     </div>
                     <div class="connector"></div>
-                    <div class="process-step">
+                    <div class="process-step anim-on-scroll anim-fade-up">
                         <div class="circle">2</div>
                         <h4 data-i18n="work_step2_title">Demo Field</h4>
                         <p data-i18n="work_step2_desc">Showcasing results live.</p>
                     </div>
                     <div class="connector"></div>
-                    <div class="process-step">
+                    <div class="process-step anim-on-scroll anim-fade-up">
                         <div class="circle">3</div>
                         <h4 data-i18n="work_step3_title">Training</h4>
                         <p data-i18n="work_step3_desc">Educating fellow farmers.</p>
                     </div>
                     <div class="connector"></div>
-                    <div class="process-step">
+                    <div class="process-step anim-on-scroll anim-fade-up">
                         <div class="circle">4</div>
                         <h4 data-i18n="work_step4_title">Selling</h4>
                         <p data-i18n="work_step4_desc">Market access & profit.</p>
@@ -421,49 +499,49 @@
     <!-- Impact -->
     <section id="impact" class="section">
         <div class="container no-padding">
-            <div class="impact-box fade-in">
+            <div class="impact-box anim-on-scroll anim-zoom-in">
                 <div class="impact-content">
-                    <h2 data-i18n="impact_title">Real World Impact</h2>
+                    <h2 class="anim-on-scroll anim-fade-up" data-i18n="impact_title">Real World Impact</h2>
 
                     <!-- New Stats Grid -->
-                    <div class="stats-grid grid grid-3">
-                        <div class="stat-item floating">
+                    <div class="stats-grid grid grid-3 anim-stagger-container">
+                        <div class="stat-item anim-on-scroll anim-zoom-in">
                             <h3 class="gradient-text stat-num">100+</h3>
                             <p data-i18n="stat_farmers">Farmers Trained</p>
                         </div>
-                        <div class="stat-item floating" style="animation-delay: 1s;">
+                        <div class="stat-item anim-on-scroll anim-zoom-in">
                             <h3 class="gradient-text stat-num">50+</h3>
                             <p data-i18n="stat_acres">Acres Regenerated</p>
                         </div>
-                        <div class="stat-item floating" style="animation-delay: 2s;">
+                        <div class="stat-item anim-on-scroll anim-zoom-in">
                             <h3 class="gradient-text stat-num">1000+</h3>
                             <p data-i18n="stat_chem">Kg Chemicals Saved</p>
                         </div>
                     </div>
 
-                    <ul class="impact-list">
-                        <li>
+                    <ul class="impact-list anim-stagger-container">
+                        <li class="anim-on-scroll anim-fade-left">
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                             <span data-i18n="impact_cost_red">Reduced farming costs by up to <strong>60%</strong></span>
                         </li>
-                        <li>
+                        <li class="anim-on-scroll anim-fade-left">
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                             <span data-i18n="impact_chem_free">Chemical-free, nutrient-rich food supply</span>
                         </li>
-                        <li>
+                        <li class="anim-on-scroll anim-fade-left">
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
                             <span data-i18n="impact_regen">Regenerated soil health for future generations</span>
                         </li>
-                        <li>
+                        <li class="anim-on-scroll anim-fade-left">
                             <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
@@ -498,8 +576,9 @@
     <!-- Gallery -->
     <section id="gallery" class="section">
         <div class="container text-center">
-            <h2 data-i18n="gal_title">Gallery</h2>
-            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;" data-i18n="gal_desc">Snapshots
+            <h2 class="anim-on-scroll anim-fade-up" data-i18n="gal_title">Gallery</h2>
+            <p class="section-subtitle anim-on-scroll anim-fade-up delay-200"
+                style="margin-left: auto; margin-right: auto;" data-i18n="gal_desc">Snapshots
                 from our journey,
                 training sessions, and success stories.</p>
 
@@ -512,34 +591,34 @@
             </div>
 
             <div class="scroll-hint-wrapper">
-                <div class="gallery-grid fade-in snap-container">
+                <div class="gallery-grid anim-stagger-container snap-container">
                     <!-- Gallery 1: Product -->
-                    <div class="gallery-item" data-category="product">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in" data-category="product">
                         <img src="assets/gallery-1.jpg" alt="Organic Farming Kit Demo" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
                     <!-- Gallery 2: Field -->
-                    <div class="gallery-item" data-category="field">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in" data-category="field">
                         <img src="assets/gallery-2.jpg" alt="Field Inspection" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
                     <!-- Gallery 3: Field -->
-                    <div class="gallery-item" data-category="field">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in" data-category="field">
                         <img src="assets/gallery-3.jpg" alt="Compost Handful" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
                     <!-- Gallery 4: Product -->
-                    <div class="gallery-item" data-category="product">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in" data-category="product">
                         <img src="assets/gallery-4.jpg" alt="Storage Barrels" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
                     <!-- Gallery 5: Training -->
-                    <div class="gallery-item" data-category="training">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in" data-category="training">
                         <img src="assets/gallery-5.jpg" alt="Community Workshop" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
                     <!-- Gallery 6: Training -->
-                    <div class="gallery-item" data-category="training">
+                    <div class="gallery-item anim-on-scroll anim-zoom-in delay-500" data-category="training">
                         <img src="assets/gallery-6.jpg" alt="Farmer Training" width="400" height="300"
                             style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                     </div>
@@ -554,19 +633,24 @@
     <!-- About -->
     <section id="about" class="section">
         <div class="container text-center">
-            <div class="about-content fade-in">
-                <h2 data-i18n="about_title">About The Project</h2>
-                <p style="margin-bottom: 3rem;" data-i18n="about_desc">We are building a scalable framework for the next
+            <div class="about-content">
+                <h2 class="anim-on-scroll anim-fade-up" data-i18n="about_title">About The Project</h2>
+                <p class="anim-on-scroll anim-fade-up delay-200" style="margin-bottom: 3rem;" data-i18n="about_desc">We
+                    are building a scalable framework for the next
                     agricultural
                     revolution. This is not just a project; it's a proven blueprint for sustainable rural economies. Our
                     mission is to bridge the gap between traditional wisdom and modern scalability.</p>
 
-                <h2 data-i18n="innov_title">About the Innovator</h2>
-                <img src="assets/innovator.png" alt="Pankaj Kumar Barik" class="innovator-img fade-in floating"
-                    loading="lazy" decoding="async">
-                <h3 style="margin-top: 1rem; color: var(--color-primary);" data-i18n="innov_name">Pankaj Kumar Barik
+                <h2 class="anim-on-scroll anim-fade-up" data-i18n="innov_title">About the Innovator</h2>
+                <div class="innovator-wrapper anim-on-scroll anim-fade-right">
+                    <img src="assets/innovator.png" alt="Pankaj Kumar Barik" class="innovator-img floating-subtle"
+                        loading="lazy" decoding="async">
+                </div>
+                <h3 class="anim-on-scroll anim-fade-left" style="margin-top: 1rem; color: var(--color-primary);"
+                    data-i18n="innov_name">Pankaj Kumar Barik
                 </h3>
-                <p data-i18n="innov_desc">A student innovator focused on sustainable and affordable farming solutions.
+                <p class="anim-on-scroll anim-fade-left" data-i18n="innov_desc">A student innovator focused on
+                    sustainable and affordable farming solutions.
                     My work centers on
                     reducing chemical dependency in agriculture through practical, logically adaptable organic methods.
                     The complete organic farming kit reflects a vision of farmer self reliance, soil health and scalable
@@ -579,8 +663,9 @@
     <section id="faq" class="section section-light">
         <div class="container" style="max-width: 800px;">
             <div class="text-center" style="margin-bottom: 3rem;">
-                <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
-                <p data-i18n="faq_subtitle">Common questions about the Organic Farming Kit.</p>
+                <h2 class="anim-on-scroll anim-fade-up" data-i18n="faq_title">Frequently Asked Questions</h2>
+                <p class="anim-on-scroll anim-fade-up delay-200" data-i18n="faq_subtitle">Common questions about the
+                    Organic Farming Kit.</p>
             </div>
 
             <div class="accordion">
@@ -700,16 +785,17 @@
         </div>
     </section>
 
-    </section>
+
 
     <!-- Location / Production Unit -->
     <section id="location" class="section section-light" style="background-color: #f9fdf9;">
         <div class="container text-center">
-            <h2 data-i18n="loc_title">Visit Our Production Unit</h2>
-            <p class="section-subtitle" data-i18n="loc_desc">See sustainable farming in action at our model farm.
+            <h2 class="anim-on-scroll anim-fade-up" data-i18n="loc_title">Visit Our Production Unit</h2>
+            <p class="section-subtitle anim-on-scroll anim-fade-up delay-200" data-i18n="loc_desc">See sustainable
+                farming in action at our model farm.
             </p>
 
-            <div class="location-card fade-in">
+            <div class="location-card anim-on-scroll anim-zoom-in">
                 <div class="loc-details">
                     <h3 data-i18n="loc_subtitle">Central Unit</h3>
                     <p class="loc-address" data-i18n="loc_addr">
@@ -746,7 +832,7 @@
     <!-- Contact -->
     <section id="contact" class="section section-dark">
         <div class="container">
-            <div class="contact-wrapper fade-in">
+            <div class="contact-wrapper anim-on-scroll anim-fade-up">
                 <div class="contact-text">
                     <h2 data-i18n="contact_title">Get in Touch</h2>
                     <p style="margin-bottom: 1.5rem;" data-i18n="contact_desc">Interested in adopting this model or
@@ -781,13 +867,14 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="jungle-footer">
         <div class="container">
-            <p>&copy; 2024 OFKFF. All rights reserved.</p>
+            <p>&copy; 2026 OFKFF. All rights reserved. | <a href="#">Privacy Policy</a></p>
         </div>
     </footer>
 
     <script src="script.js?v=2"></script>
+    <script src="background-anim.js"></script>
 </body>
 
 </html>

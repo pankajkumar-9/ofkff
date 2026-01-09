@@ -4,254 +4,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organic Vermicompost - The Black Gold | OFKFF</title>
+    <title>Vermicompost | The Ultimate Soil Amendment</title>
     <meta name="description"
-        content="Buy premium organic Vermicompost. Enriched with micro-organisms to improve soil texture and water retention. The best natural fertilizer for your crops.">
-    <meta name="keywords"
-        content="vermicompost, organic fertilizer, earthworm manure, soil health, black gold agriculture, buy vermicompost">
+        content="Discover the comprehensive science, process, and benefits of Vermicompost. The black gold that transforms agriculture.">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="product">
-    <meta property="og:title" content="Organic Vermicompost - OFKFF">
-    <meta property="og:description" content="Enriched organic vermicompost for superior soil health.">
-    <meta property="og:image" content="assets/vermi-10kg.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">
 </head>
 
-<body>
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo"
-                style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                <img src="assets/logo.png" alt="OFKFF Logo" style="height: 40px; width: auto;">
-                OFKFF
-            </a>
-            <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem;">
-                <div class="lang-switch">
-                    <select id="langSelect" onchange="changeLanguage(this.value)"
-                        style="padding: 0.3rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;">
-                        <option value="en">🇺🇸 English</option>
-                        <option value="hi">🇮🇳 हिन्दी</option>
-                        <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
-                    </select>
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-i18n="nav_home">Back to Home</a></li>
-                    </ul>
-                </nav>
-                <div class="cart-icon" onclick="openCart()"
-                    style="cursor: pointer; display: flex; align-items: center;">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                    </svg> <span class="cart-count">0</span>
-                </div>
+<body class="jungle-theme">
+
+    <!-- Navbar -->
+    <header class="jungle-nav">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="OFKFF">
+                    <span>OFKFF</span>
+                </a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <!-- Language Selector -->
+                <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)"
+                    style="padding: 0.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; cursor: pointer;">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="or">ଓଡିଆ</option>
+                </select>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggle" onclick="toggleTheme()"
+                    style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: white;">
+                    🌙
+                </button>
+
+                <a href="index.html" class="back-link" data-i18n="nav_home">
+                    <span>&larr; Home</span>
+                </a>
             </div>
         </div>
     </header>
 
-    <section class="hero" style="min-height: 50vh;">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Vermicompost</h1>
-                <p>The "Black Gold" of Agriculture</p>
-            </div>
+    <!-- Section 1: Hero -->
+    <section class="jungle-hero">
+        <div class="jungle-overlay"></div>
+        <div class="leaf layer-1"></div>
+        <div class="leaf layer-2"></div>
+        <div class="leaf layer-3"></div>
+
+        <div class="container hero-container">
+            <span class="hero-label" data-i18n="vermi_hero_label">The Foundation of Life</span>
+            <h1 class="jungle-title" data-i18n="vermi_hero_title">Vermicompost</h1>
+            <p class="jungle-subtitle" data-i18n="vermi_hero_subtitle">The science of turning organic waste into
+                nature's most potent fertilizer.</p>
+
+            <!-- Scroll indicator removed -->
         </div>
     </section>
 
-    <!-- Market Section -->
-    <section id="market" class="section section-light" style="padding-top: 2rem;">
+    <!-- Section 2: The Introduction (What is it exactly?) -->
+    <section class="roots-section">
         <div class="container">
-            <!-- E-commerce Header -->
-            <div class="market-header">
-                <div class="market-title">
-                    <h2>Organic Store</h2>
-                    <p>Shop organic, grow natural.</p>
-                </div>
-                <div class="market-controls">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search for products...">
-                        <button class="btn-search"><svg width="18" height="18" fill="none" stroke="currentColor"
-                                stroke-width="2" viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="8" />
-                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            </svg></button>
+            <div class="story-block visible" style="border-left:none; padding-left:0; max-width:100%;">
+                <div class="grid grid-2" style="align-items: center;">
+                    <div>
+                        <h2 data-i18n="vermi_intro_title">"Black Gold" Defined</h2>
+                        <p class="story-text" data-i18n="vermi_intro_p1">
+                            Vermicompost is not just compost. It is a <strong>biotechnological process</strong> where
+                            earthworms and bio-engineered microorganisms work in harmony to transform organic waste into
+                            a nutrient-rich, dark, and odorless soil conditioner.
+                        </p>
+                        <p class="story-text" data-i18n="vermi_intro_p2">
+                            Scientifically, it is the excreta of earthworms, rich in humus and teeming with beneficial
+                            bacteria, fungi, and actinomycetes. Unlike regular thermal compost which relies on heat,
+                            vermicompost relies on the <strong>biological activity</strong> of the worm's gut, which
+                            acts as a miniature bioreactor.
+                        </p>
                     </div>
-                    <div class="cart-icon" onclick="openCart()">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <circle cx="9" cy="21" r="1" />
-                            <circle cx="20" cy="21" r="1" />
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                        </svg> <span class="cart-count">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="market-layout">
-                <!-- Sidebar Filters -->
-                <aside class="market-sidebar">
-                    <div class="filter-group">
-                        <h3>Also Check Out</h3>
-                        <a href="jeevamrut.html">Organic Jeevamrut</a>
-                        <a href="nimastra.html">Organic Nimastra</a>
-                        <a href="brahmastra.html">Organic Brahmastra</a>
-                    </div>
-                    <div class="filter-group">
-                        <h3>Need Expert Advice?</h3>
-                        <p>Not sure which product matches your crop's symptoms?</p>
-                        <a href="index.html#crop-doctor" class="btn btn-secondary"
-                            style="width: 100%; text-align: center; display: block; padding: 0.8rem; font-size: 0.9rem;">Launch
-                            Crop Doctor</a>
-                    </div>
-                </aside>
-
-                <!-- Product Grid -->
-                <div class="market-products">
-                    <!-- 1kg -->
-                    <div class="product-card-premium">
-
-                        <div class="product-img-box">
-                            <img src="assets/vermi-1kg.png" alt="1kg Vermicompost">
-                        </div>
-                        <div class="product-details">
-                            <h3>Organic Vermicompost - 1 Kg Pack</h3>
-
-                            <div class="price-block">
-                                <span class="current-price">&#8377;20</span>
-                                <span class="original-price">&#8377;40</span>
-                                <span class="discount">50% off</span>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="btn-action btn-add-cart"
-                                    onclick="addToCart('Organic Vermicompost - 1 Kg', 20)">Add to Cart</button>
-                                <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
-                                    Now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 5kg -->
-                    <div class="product-card-premium">
-                        <div class="product-img-box">
-                            <img src="assets/vermi-5kg.png" alt="5kg Vermicompost">
-                        </div>
-                        <div class="product-details">
-                            <h3>Organic Vermicompost - 5 Kg Bag</h3>
-
-                            <div class="price-block">
-                                <span class="current-price">&#8377;90</span>
-                                <span class="original-price">&#8377;150</span>
-                                <span class="discount">40% off</span>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="btn-action btn-add-cart"
-                                    onclick="addToCart('Organic Vermicompost - 5 Kg', 90)" data-i18n="btn_add_cart">Add
-                                    to Cart</button>
-                                <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')"
-                                    data-i18n="btn_buy_now">Buy
-                                    Now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 10kg -->
-                    <div class="product-card-premium">
-                        <div class="badge-organic">Certified Organic</div>
-                        <div class="product-img-box">
-                            <img src="assets/vermi-10kg.png" alt="10kg Vermicompost" width="200" height="200"
-                                loading="lazy">
-                        </div>
-                        <div class="product-details">
-                            <h3>Organic Vermicompost - 10 Kg Sack</h3>
-
-                            <div class="price-block">
-                                <span class="current-price">&#8377;170</span>
-                                <span class="original-price">&#8377;300</span>
-                                <span class="discount">43% off</span>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="btn-action btn-add-cart"
-                                    onclick="addToCart('Organic Vermicompost - 10 Kg', 170)">Add to Cart</button>
-                                <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
-                                    Now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 50kg -->
-                    <div class="product-card-premium">
-
-                        <div class="product-img-box">
-                            <img src="assets/vermi-50kg.png" alt="50kg Vermicompost" width="200" height="200"
-                                loading="lazy">
-                        </div>
-                        <div class="product-details">
-                            <h3>Organic Vermicompost - 50 Kg Bulk</h3>
-
-                            <div class="price-block">
-                                <span class="current-price">&#8377;800</span>
-                                <span class="original-price">&#8377;1,200</span>
-                                <span class="discount">33% off</span>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="btn-action btn-add-cart"
-                                    onclick="addToCart('Organic Vermicompost - 50 Kg', 800)">Add to Cart</button>
-                                <button class="btn-action btn-buy-now"
-                                    onclick="window.open('https://forms.gle/Aht1BTsPW9bXUKKX6', '_blank')">Buy
-                                    Now</button>
-                            </div>
-                        </div>
+                    <div class="image-wrapper-glass">
+                        <!-- Placeholder for generated close-up image -->
+                        <img src="assets/black-gold.png" alt="Close up of rich vermicompost in hands">
+                        <!-- Replace with generated image path if needed -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section section-light">
+    <!-- Section 3: The Architect (Eisenia fetida) -->
+    <section class="jungle-focus-section" style="padding: 6rem 0; background-color: #1a4420;">
         <div class="container">
-            <h2>About Vermicompost</h2>
-            <p>Vermicompost is the product of the decomposition process using various species of worms, usually red
-                wigglers, white worms, and other earthworms, to create a mixture of decomposing vegetable or food waste,
-                bedding materials, and vermicast.</p>
-            <br>
-            <h3>Benefits</h3>
-            <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 1rem; color: var(--color-text-body);">
-                <li>Improves soil aeration and texture.</li>
-                <li>Enriches soil with micro-organisms (adding enzymes such as phosphatase and cellulase).</li>
-                <li>Microbial activity in worm castings is 10 to 20 times higher than in the soil and organic matter
-                    that the worm consumes.</li>
-                <li>Attracts deep-burrowing earthworms already present in the soil.</li>
-                <li>Enhances water holding capacity.</li>
-            </ul>
-            <br>
-            <h3>Preparation Method</h3>
-            <p>To prepare vermicompost, organic waste is placed in layers in a pit or tank. Earthworms are introduced to
-                the waste. The pit is kept moist and covered. Over a period of 45-60 days, the worms consume the waste
-                and excrete nutrient-rich castings.</p>
-
-            <div style="margin-top: 3rem;">
-                <a href="index.html#solution" class="btn btn-primary">Back to Home</a>
+            <h2 class="section-heading" data-i18n="vermi_arch_title">Meet the Architect: <em>Eisenia fetida</em></h2>
+            <div class="focus-grid">
+                <div class="focus-card visible">
+                    <h3 data-i18n="vermi_arch_c1_title">Epigeic Nature</h3>
+                    <p data-i18n="vermi_arch_c1_desc">These "Red Wigglers" don't burrow deep. They thrive on the surface
+                        layer, consuming organic
+                        litter. This makes them perfect for composting bins.</p>
+                </div>
+                <div class="focus-card visible">
+                    <h3 data-i18n="vermi_arch_c2_title">Voracious Appetite</h3>
+                    <p data-i18n="vermi_arch_c2_desc">A single worm can consume its own body weight in waste
+                        <strong>every single day</strong>. They
+                        are relentless recycling machines.
+                    </p>
+                </div>
+                <div class="focus-card visible">
+                    <h3 data-i18n="vermi_arch_c3_title">The Gut Bioreactor</h3>
+                    <p data-i18n="vermi_arch_c3_desc">Inside the worm's gizzard, waste is ground up and coated with
+                        enzymes (protease, lipase, amylase,
+                        cellulase) and mucus, boosting microbial activity by 1000x.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Section 4: The Process (Step by Step) -->
+    <section class="process-section" style="padding: 8rem 0; background: #e8f5e9; color: #333;">
         <div class="container">
-            <p>&copy; 2024 OFKFF. All rights reserved.</p>
+            <h2 class="section-heading" style="color:#1b5e20;" data-i18n="vermi_proc_title">How It's Made</h2>
+            <p style="text-align:center; max-width:700px; margin:0 auto 4rem auto; color:#555;"
+                data-i18n="vermi_proc_subtitle">From waste to wealth:
+                The scientific layering method.</p>
+
+            <div class="process-visual-grid grid grid-2" style="align-items:center;">
+                <div class="process-img">
+                    <!-- Placeholder for generated diagram -->
+                    <img src="assets/vermi-layers.png" alt="Cross section of vermicompost bed"
+                        style="width:100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                </div>
+                <div class="process-steps">
+                    <div class="step-item">
+                        <span class="step-num">01</span>
+                        <h4 data-i18n="vermi_proc_s1_title">Bedding Preparation</h4>
+                        <p data-i18n="vermi_proc_s1_desc">A carbon-rich layer (shredded cardboard, dry leaves, coconut
+                            coir) mimics the forest floor.
+                            It provides aeration and retains moisture (keep like a wrung-out sponge).</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">02</span>
+                        <h4 data-i18n="vermi_proc_s2_title">Inoculation</h4>
+                        <p data-i18n="vermi_proc_s2_desc">Earthworms are introduced. We start with ~1000 worms per
+                            square meter. They burrow away from
+                            light into the moist bedding.</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">03</span>
+                        <h4 data-i18n="vermi_proc_s3_title">Feeding</h4>
+                        <p data-i18n="vermi_proc_s3_desc">Nitrogen-rich waste (vegetable peels, cow dung, crop residue)
+                            is added in chopped layers.
+                            <strong>Avoid:</strong> Meat, dairy, and citrus to prevent acidity.
+                        </p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">04</span>
+                        <h4 data-i18n="vermi_proc_s4_title">Harvesting</h4>
+                        <p data-i18n="vermi_proc_s4_desc">After 60-90 days, the top material is consumed. The black,
+                            granular castings settle at the
+                            bottom. We separate worms using light migration or sieving.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Nutritional Deep Dive -->
+    <section class="deep-dive-section" style="padding: 8rem 0; background: var(--jungle-dark);">
+        <div class="container">
+            <h2 class="section-heading" data-i18n="vermi_nut_title">Nutrient Profile Analysis</h2>
+
+            <div class="nutrient-table-wrapper"
+                style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; backdrop-filter: blur(10px);">
+                <div class="grid grid-2" style="align-items: center; gap: 4rem;">
+                    <div>
+                        <!-- Placeholder for nutrient cycle image -->
+                        <img src="assets/nutrient-cycle.png" alt="Nutrient Cycle Illustration"
+                            style="width:100%; border-radius: 12px;">
+                    </div>
+                    <div class="analyis-text">
+                        <h3 style="color:var(--jungle-accent); margin-bottom:1.5rem;" data-i18n="vermi_nut_h3">Superior
+                            Plant Nutrition</h3>
+                        <table class="nutrient-table">
+                            <tr>
+                                <td data-i18n="vermi_nut_t_n_label">Nitrogen (N)</td>
+                                <td>1.5 - 2.5%</td>
+                                <td data-i18n="vermi_nut_t_n_desc">Essential for leafy growth and protein synthesis.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="vermi_nut_t_p_label">Phosphorus (P)</td>
+                                <td>1.6 - 1.8%</td>
+                                <td data-i18n="vermi_nut_t_p_desc">Crucial for root development and flowering.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="vermi_nut_t_k_label">Potassium (K)</td>
+                                <td>1.0 - 1.5%</td>
+                                <td data-i18n="vermi_nut_t_k_desc">Builds immunity and disease resistance.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="vermi_nut_t_c_label">Organic Carbon</td>
+                                <td>18 - 25%</td>
+                                <td data-i18n="vermi_nut_t_c_desc">Energy source for soil microbes.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="vermi_nut_t_cn_label">C:N Ratio</td>
+                                <td>10 - 15:1</td>
+                                <td data-i18n="vermi_nut_t_cn_desc">Ideal balance for plant uptake.</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top:2rem; font-size:0.9rem; opacity:0.8;">
+                            <em data-i18n="vermi_nut_note">*Also contains Calcium, Magnesium, Zinc, Copper, Iron, and
+                                growth hormones like Auxins
+                                and Cytokinins.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Why Organic (Benefits) -->
+    <section class="benefits-deep" style="padding: 8rem 0; background: linear-gradient(to bottom, #1b4d24, #123315);">
+        <div class="container">
+            <h2 class="section-heading" data-i18n="vermi_ben_title">Why Crops Thrive</h2>
+            <div class="grid grid-3" style="gap: 2rem;">
+                <div class="benefit-detail-card">
+                    <h4 data-i18n="vermi_ben_c1_title">🌱 Physical Soil Improvement</h4>
+                    <p data-i18n="vermi_ben_c1_desc">Vermicompost improves soil aeration and texture. It increases
+                        water-holding capacity by up to
+                        <strong>30-40%</strong>, reducing irrigation needs significantly during droughts.
+                    </p>
+                </div>
+                <div class="benefit-detail-card">
+                    <h4 data-i18n="vermi_ben_c2_title">🦠 Biological Activation</h4>
+                    <p data-i18n="vermi_ben_c2_desc">It adds 10-20 times more microbial activity than regular soil.
+                        These microbes (nitrogen fixers,
+                        phosphate solubilizers) continue to work for months, making nutrients available "on demand".</p>
+                </div>
+                <div class="benefit-detail-card">
+                    <h4 data-i18n="vermi_ben_c3_title">🛡️ Plant Defense</h4>
+                    <p data-i18n="vermi_ben_c3_desc">Rich in chitinase enzyme, which breaks down the cell walls of pests
+                        and fungi. It acts as a
+                        natural bio-control agent against root rot and nematodes.</p>
+                </div>
+            </div>
+
+            <div class="market-comparison" style="margin-top: 4rem; text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: #fff;" data-i18n="vermi_comp_vs">vs. Chemical
+                    Fertilizers</h3>
+                <div class="comparison-bar">
+                    <div class="comp-item bad">
+                        <span data-i18n="vermi_comp_bad">Chemicals</span>
+                        <p data-i18n="vermi_comp_bad_desc">Explosive, short-term growth. Kills soil life. Acidifies soil
+                            over time.</p>
+                    </div>
+                    <div class="comp-item good">
+                        <span data-i18n="vermi_comp_good">Vermicompost</span>
+                        <p data-i18n="vermi_comp_good_desc">Sustained, long-term health. Regenerates soil life. Balances
+                            pH (Neutral 6.8 - 7.5).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Buying The Best -->
+    <section id="buy-section" class="jungle-buy">
+        <div class="container">
+            <div class="buy-card-wrapper">
+                <div class="product-visual">
+                    <div class="glow-bg"></div>
+                    <img src="assets/vermi-1kg.png" alt="Premium Vermicompost Pack">
+                </div>
+                <div class="product-details">
+                    <span class="badge-premium" data-i18n="vermi_buy_badge">OFKFF Premium Grade</span>
+                    <h2 data-i18n="vermi_buy_title">Start Your Soil Transformation</h2>
+                    <p class="product-desc" data-i18n="vermi_buy_desc">
+                        Our vermicompost is produced under strict quality control. We use a blend of cow dung and green
+                        biomass to ensure a balanced C:N ratio. Sieved to 4mm for easy application.
+                    </p>
+
+                    <ul class="specs-list">
+                        <li><span data-i18n="vermi_buy_list1">📦 1kg / 5kg / 50kg Bags</span></li>
+                        <li><span data-i18n="vermi_buy_list2">💧 Moisture: 30% (Live Microbes)</span></li>
+                        <li><span data-i18n="vermi_buy_list3">🌿 Weed Seed Free</span></li>
+                        <li><span data-i18n="vermi_buy_list4">🔬 Lab Tested Quality</span></li>
+                    </ul>
+
+                    <div class="price-block">
+                        <span class="price" data-i18n="vermi_buy_price">From &#8377;20</span>
+                        <span class="unit" data-i18n="vermi_buy_unit">/ kg</span>
+                    </div>
+
+                    <div class="action-row">
+                        <a href="marketplace.html" class="btn-jungle-primary" data-i18n="vermi_buy_btn">Order Now
+                            &rarr;</a>
+                    </div>
+                    <p class="shipping-note" data-i18n="vermi_buy_note">Free delivery for bulk orders > 100kg</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Recommended Products (Cross-Linking) -->
+    <section class="related-products"
+        style="padding: 4rem 0; background: #050f05; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container">
+            <h3 style="color: #fff; margin-bottom: 2rem; text-align: center;" data-i18n="related_title">Complete Your
+                Kit</h3>
+            <div class="grid grid-3" style="gap: 2rem;">
+                <a href="jeevamrut.html" class="related-card"
+                    style="display:block; text-decoration:none; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; transition: transform 0.3s;">
+                    <h4 style="color: #81c784; margin-bottom: 0.5rem;" data-i18n="related_jeeva_title">Jeevamrut</h4>
+                    <p style="color: #ccc; font-size: 0.9rem;" data-i18n="related_jeeva_desc">Liquid microbial culture
+                        for immunity.</p>
+                </a>
+                <a href="nimastra.html" class="related-card"
+                    style="display:block; text-decoration:none; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; transition: transform 0.3s;">
+                    <h4 style="color: #81c784; margin-bottom: 0.5rem;" data-i18n="related_nimastra_title">Nimastra</h4>
+                    <p style="color: #ccc; font-size: 0.9rem;" data-i18n="related_nimastra_desc">First line of defense
+                        against soft-bodied pests.</p>
+                </a>
+                <a href="brahmastra.html" class="related-card"
+                    style="display:block; text-decoration:none; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; transition: transform 0.3s;">
+                    <h4 style="color: #81c784; margin-bottom: 0.5rem;" data-i18n="related_brahma_title">Brahmastra</h4>
+                    <p style="color: #ccc; font-size: 0.9rem;" data-i18n="related_brahma_desc">Ultimate protection
+                        against larger insects and borers.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="jungle-footer">
+        <div class="container">
+            <p>&copy; 2026 OFKFF. <a href="index.html">Back to Home</a></p>
         </div>
     </footer>
-    <script src="script.js?v=2"></script>
+
+    <script src="script.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.story-block, .focus-card, .process-visual-grid, .benefit-detail-card, .buy-card-wrapper').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 
 </html>

@@ -9,14 +9,16 @@
     --color-accent: #A5D6A7;
 
     /* Neutrals */
-    --color-text-main: #1D1D1F;
-    --color-text-body: #424245;
-    --color-text-light: #86868B;
+    --color-text-main: #000000;
+    --color-text-body: #111111;
+    --color-text-light: #444444;
     --color-bg-page: #FFFFFF;
     --color-bg-section: #F5F5F7;
     --color-bg-dark: #1D1D1F;
     /* Dark section background */
     --color-border: #D2D2D7;
+    --color-text-head: #000000;
+    /* Added missing var */
 
     /* Typography */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -104,9 +106,10 @@ body.dark-theme .accordion-item,
 body.dark-theme .faq-item,
 body.dark-theme .chatbot-greeting,
 body.dark-theme .chatbot-menu {
-    background-color: var(--color-bg-surface);
-    border-color: var(--color-border);
+    background-color: rgba(30, 30, 30, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.1);
     color: var(--color-text-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
 body.dark-theme .card:hover,
@@ -134,10 +137,7 @@ body.dark-theme .hero {
 }
 
 body.dark-theme .hero h1 {
-    /* Reset text gradient for better readability or adjust it */
-    background: linear-gradient(180deg, #ffffff 0%, #b0b3b8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-text-fill-color: var(--color-text-main);
 }
 
 /* Icons within cards */
@@ -172,13 +172,14 @@ body.dark-theme .chatbot-header {
 }
 
 body.dark-theme .chat-option {
-    background-color: #303031;
-    /* Lighter than surface */
+    background-color: rgba(255, 255, 255, 0.05);
     color: var(--color-text-main);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
 }
 
 body.dark-theme .chat-option:hover {
-    background-color: #3a3b3c;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-primary);
 }
 
 body.dark-theme .accordion-header:hover {
@@ -498,7 +499,6 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     width: 100%;
 }
 
@@ -508,41 +508,28 @@ body {
     background-color: var(--color-bg-page);
     line-height: 1.6;
     position: relative;
-    overflow-x: hidden;
     width: 100%;
     /* Removed background-attachment: fixed for performance */
 }
 
-/* Fixed Background Image Layer (GPU Accelerated) */
-body::before {
-    content: "";
+/* Canvas Background */
+#bg-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2;
-    background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    will-change: transform;
-    /* Hint to browser to promote to layer */
+    z-index: -10;
+    /* Behind everything */
+    /* filter: blur(60px); Removed for performance - gradients provide softness */
 }
 
-/* White Overlay Layer */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.50);
-    pointer-events: none;
-    z-index: -1;
-    /* backdrop-filter removed for performance stability */
+/* Removed static body::before and body::after */
+body {
+    background-color: transparent;
+    /* Let canvas show */
 }
+
 
 h1,
 h2,
@@ -685,7 +672,7 @@ p {
 /* Header */
 header {
     height: var(--header-height);
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
@@ -741,9 +728,9 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: var(--header-height);
-    /* Remove radial gradient here to let body shine through, add subtle spotlight */
-    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+    padding-top: 0;
+    /* Transparent to show canvas animation */
+    background: transparent;
 }
 
 .hero-content {
@@ -754,10 +741,10 @@ header .container {
 
 .hero h1 {
     margin-bottom: 1.5rem;
-    background: linear-gradient(180deg, var(--color-text-main) 0%, #4a4a4a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-text-fill-color: var(--color-text-main);
+    color: var(--color-text-main);
+    /* Fallback */
 }
 
 .hero p {
@@ -1312,16 +1299,350 @@ footer {
 }
 
 /* Sidebar */
+/* =========================================
+   MARKETPLACE "BEST IN CLASS" REDESIGN
+   ========================================= */
+
+/* --- Market Hero --- */
+.market-hero {
+    background: linear-gradient(135deg, #f0fdf4 0%, #fff 100%);
+    padding: 6rem 0 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .market-hero {
+    background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+}
+
+.market-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-primary), #43A047);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.market-hero p {
+    font-size: 1.25rem;
+    color: var(--color-text-body);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Layout --- */
+.market-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+    align-items: start;
+}
+
+/* --- Sidebar --- */
 .market-sidebar {
-    background: white;
+    background: var(--color-bg-page);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 100px;
+    transition: all 0.3s ease;
+}
+
+.market-sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.market-sidebar a {
+    display: block;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.market-sidebar a:hover {
+    background: rgba(76, 175, 80, 0.08);
+    color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+.filter-group {
+    margin-bottom: 2.5rem;
+}
+
+/* --- Product Grid --- */
+.market-products {
+    display: block;
+    width: 100%;
+}
+
+.market-products .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* --- Premium Product Card --- */
+.product-card-premium {
+    background: var(--color-bg-page);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Badges */
+.badge-best-seller,
+.badge-organic,
+.badge-bulk {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 99px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.badge-organic {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.badge-best-seller {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.badge-bulk {
+    background: #E3F2FD;
+    color: #1565C0;
+}
+
+/* Image Area */
+.product-img-box {
+    height: 260px;
+    background: #f8f9fa;
+    /* Light gray background */
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .product-img-box {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.product-img-box img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
+}
+
+.product-card-premium:hover .product-img-box img {
+    transform: scale(1.08) translateY(-5px);
+}
+
+/* Details */
+.product-details {
     padding: 1.5rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-details h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+    line-height: 1.3;
+}
+
+.sub-text {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+/* Price */
+.price-block {
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+}
+
+.current-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.original-price {
+    color: var(--color-text-light);
+    text-decoration: line-through;
+    font-size: 0.95rem;
+}
+
+.discount {
+    color: #43A047;
+    font-weight: 700;
+    font-size: 0.85rem;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Actions */
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0.8rem;
+}
+
+.btn-action {
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.btn-add-cart {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-main);
+}
+
+.btn-add-cart:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.btn-buy-now {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.25);
+}
+
+.btn-buy-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.35);
+}
+
+/* Dark Theme Adjustments */
+body.dark-theme .market-sidebar {
+    background: #1e1e1e;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .product-card-premium {
+    background: #252627;
+    /* Slightly lighter than existing to stand out */
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .product-card-premium .product-details h3 {
+    color: #ffffff;
+    /* Pure white for titles */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .product-card-premium .sub-text,
+body.dark-theme .product-card-premium .original-price {
+    color: #b0b3b8;
+    /* Medium emphasis */
+}
+
+body.dark-theme .product-card-premium .current-price {
+    color: #4ade80;
+    /* Bright Green */
+}
+
+/* Image Box: Dark Mode - REMOVED WHITE GRADIENT */
+body.dark-theme .product-img-box {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.3) 80%);
+    /* Mostly dark transparent with slight center highlight */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .btn-add-cart {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .btn-add-cart:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .market-layout {
+        grid-template-columns: 1fr;
+        padding-top: 2rem;
+    }
+
+    .market-sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .market-hero h1 {
+        font-size: 2.5rem;
+    }
 }
 
 .filter-group {
     margin-bottom: 2rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-body);
+    font-weight: 500;
 }
 
 .filter-group h3 {
@@ -1373,212 +1694,7 @@ body.dark-theme .market-sidebar a:not(.btn) {
     color: var(--color-primary-light) !important;
 }
 
-.filter-group label {
-    display: block;
-    margin-bottom: 0.8rem;
-    font-size: 0.95rem;
-    color: var(--color-text-body);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
 
-/* Product Grid */
-.market-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-/* Premium Product Card */
-.product-card-premium {
-    background: white;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.product-card-premium:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Badges */
-.badge-best-seller,
-.badge-organic,
-.badge-bulk {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    color: white;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    z-index: 10;
-}
-
-.badge-best-seller {
-    background: #FF9800;
-}
-
-/* Orange */
-.badge-organic {
-    background: #4CAF50;
-}
-
-/* Green */
-.badge-bulk {
-    background: #2196F3;
-}
-
-/* Blue */
-
-.product-img-box {
-    height: 220px;
-    background: #fdfdfd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.product-img-box img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s;
-}
-
-.product-card-premium:hover .product-img-box img {
-    transform: scale(1.08);
-}
-
-.product-details {
-    padding: 1.5rem;
-    text-align: left;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-details h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--color-text-main);
-    line-height: 1.4;
-}
-
-.rating {
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-    color: #FBC02D;
-}
-
-.rating .count {
-    color: var(--color-text-light);
-    font-size: 0.8rem;
-    margin-left: 0.3rem;
-}
-
-.price-block {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: baseline;
-    gap: 0.8rem;
-}
-
-.current-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-text-main);
-}
-
-.original-price {
-    text-decoration: line-through;
-    color: var(--color-text-light);
-    font-size: 0.9rem;
-}
-
-.discount {
-    color: #388E3C;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.delivery-info {
-    font-size: 0.85rem;
-    color: var(--color-text-body);
-    margin-bottom: 1.5rem;
-}
-
-.action-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-    margin-top: auto;
-}
-
-.btn-action {
-    border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: filter 0.2s;
-}
-
-.btn-add-cart {
-    background: #FFD814;
-    /* Amazon yellow */
-    color: #0F1111;
-}
-
-.btn-action:hover {
-    filter: brightness(0.95);
-}
-
-.btn-buy-now {
-    background: #FFA41C;
-    /* Amazon orange */
-    color: #0F1111;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .market-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .market-sidebar {
-        display: none;
-        /* Hide filters on mobile for simplicity */
-    }
-
-    .market-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .market-controls,
-    .search-bar {
-        width: 100%;
-    }
-
-    .search-bar input {
-        width: 100%;
-    }
-}
 
 /* =========================================
    Homepage Marketplace Discoverability
@@ -1757,14 +1873,19 @@ body.dark-theme .market-sidebar a:not(.btn) {
     object-fit: cover;
     margin: 0 auto 1.5rem auto;
     border: 4px solid white;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    /* Softer shadow */
     display: block;
-    transition: transform 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Premium ease */
 }
 
 .innovator-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-secondary);
+    /* Subtle interaction */
+    box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+    /* Colored shadow */
 }
 
 .about-content p {
@@ -1836,7 +1957,34 @@ body.dark-theme .market-sidebar a:not(.btn) {
 .floating {
     animation: float 6s ease-in-out infinite;
     animation-delay: 1.5s;
+    animation-delay: 1.5s;
     /* Wait for load to finish */
+}
+
+@keyframes floatSubtle {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating-subtle {
+    animation: floatSubtle 5s ease-in-out infinite;
+}
+
+.innovator-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    /* Adjusted for image margin */
 }
 
 /* Staggered Animations */
@@ -2133,7 +2281,68 @@ body.dark-theme .market-sidebar a:not(.btn) {
 @keyframes scaleIn {
     to {
         transform: scale(1);
+        opacity: 1;
     }
+}
+
+/* MARKETPLACE SPECIFIC - PAGE BACKGROUND FIX */
+.marketplace-page {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-body);
+}
+
+.marketplace-page.dark-theme {
+    background-color: #000000 !important;
+    /* Force True Black */
+    color: #e4e6eb;
+}
+
+/* Header & Branding */
+.header-branding {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.header-branding img {
+    height: 40px;
+    width: auto;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.lang-select-wrapper select {
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    background: var(--color-bg-card);
+    color: var(--color-text-main);
+    cursor: pointer;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+    transform: rotate(15deg);
 }
 
 /* =========================================
@@ -2435,7 +2644,11 @@ body.dark-theme .market-sidebar a:not(.btn) {
    ========================================= */
 @media (max-width: 768px) {
     .snap-container {
-        display: flex;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: none !important;
+        grid-auto-flow: column !important;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 1rem;
@@ -2447,6 +2660,8 @@ body.dark-theme .market-sidebar a:not(.btn) {
         /* Padding for last item */
         -webkit-overflow-scrolling: touch;
         /* Smooth scroll on iOS */
+        align-items: stretch;
+        /* Ensure equal height */
 
         /* Hide scrollbar for cleaner look */
         scrollbar-width: none;
@@ -2528,23 +2743,24 @@ body.dark-theme .market-sidebar a:not(.btn) {
 
     /* COMPACT GRID OVERRIDES for Mobile */
 
-    /* Impact Stats - Force 3 in a row */
+    /* Impact Stats - Force 3 in a row, tighter but readable */
     .stats-grid {
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.5rem !important;
+        gap: 0.25rem !important;
         margin-bottom: 2rem !important;
     }
 
     .stat-item h3 {
-        font-size: 1.8rem !important;
-        /* Smaller numbers */
+        font-size: 1.4rem !important;
+        /* Smaller numbers for mobile */
         margin-bottom: 0.2rem !important;
     }
 
     .stat-item p {
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important;
         /* Smaller text */
-        line-height: 1.2 !important;
+        line-height: 1.1 !important;
+        word-wrap: break-word;
     }
 
     /* Estimator Results - Force 2x2 Grid */
@@ -2651,16 +2867,16 @@ body.dark-theme .market-sidebar a:not(.btn) {
 }
 
 .chatbot-toggle {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--color-primary), #43A047);
     border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid var(--color-primary);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2668,7 +2884,8 @@ body.dark-theme .market-sidebar a:not(.btn) {
 }
 
 .chatbot-toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 12px 30px rgba(46, 125, 50, 0.6);
 }
 
 .chatbot-toggle img {
@@ -2705,11 +2922,11 @@ body.dark-theme .market-sidebar a:not(.btn) {
 
 /* Greeting Bubble */
 .chatbot-greeting {
-    background-color: #fff;
-    color: #333;
-    padding: 0.8rem 1.2rem;
+    background-color: var(--color-text-main);
+    color: #fff;
+    padding: 0.8rem 1.25rem;
     border-radius: 20px 20px 0 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
     font-size: 0.95rem;
     font-weight: 600;
@@ -2732,27 +2949,28 @@ body.dark-theme .market-sidebar a:not(.btn) {
 }
 
 /* Chat Menu */
+/* Chat Menu - Premium Glass */
 .chatbot-menu {
     position: absolute;
-    bottom: 80px;
+    bottom: 90px;
     right: 0;
-    width: 280px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    padding: 1.5rem;
     transform-origin: bottom right;
-    transform: scale(0);
+    transform: scale(0.9) translateY(20px);
     opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     visibility: hidden;
     z-index: 1000;
-    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .chatbot-menu.active {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
     opacity: 1;
     visibility: visible;
 }
@@ -2775,21 +2993,24 @@ body.dark-theme .market-sidebar a:not(.btn) {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
     border: none;
-    background: #f8f9fa;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: left;
-    color: #333;
+    color: var(--color-text-body);
     font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .chat-option:hover {
-    background: #e9ecef;
-    transform: translateX(5px);
+    background: #fff;
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: var(--color-primary);
 }
 
 .chat-option .icon {
@@ -2950,4 +3171,1432 @@ body.dark-theme .map-overlay {
 body.dark-theme .view-map-btn {
     background: var(--color-bg-surface);
     color: var(--color-text-main);
+}
+
+/* FAQ Accordion Styles for Product Pages */
+.faq-item h4 {
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.faq-item h4::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active h4::after {
+    transform: translateY(-50%) rotate(45deg);
+    /* Optional rotation or change to minus */
+    content: '-';
+}
+
+.faq-item p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease;
+    opacity: 0;
+    margin-bottom: 0;
+    /* Collapse margin */
+}
+
+.faq-item.active p {
+    opacity: 1;
+    margin-bottom: 1rem;
+}
+
+/* --- Premium Shop Banner (Homepage CTA) --- */
+.shop-banner-section {
+    position: relative;
+    z-index: 10;
+    padding: 6rem 1.5rem;
+    overflow: hidden;
+    margin-top: -6rem;
+    /* Create overlap */
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: white;
+    transform: translateY(0);
+}
+
+.shop-banner-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.shop-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.shop-banner-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shop-banner-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-wrap: balance;
+}
+
+.shop-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: white;
+    color: var(--color-primary);
+    padding: 1.2rem 3.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-banner-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    background: #f0fdf4;
+}
+
+.shop-banner-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: rgba(46, 125, 50, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+}
+
+.shop-banner-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.shop-banner-floating-img {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.shop-banner-img-item {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.shop-banner-img-item:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .shop-banner-title {
+        font-size: 1.8rem;
+    }
+
+    .shop-banner-section {
+        padding: 4rem 1rem;
+        border-radius: 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+    }
+}
+
+/* Solution Card Enhancements - Magic Button */
+.benefit-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    background: #e8f5e9;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-cta-btn {
+    margin-top: 1.5rem;
+    position: relative;
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Magic Button - Exciting by Default */
+.card-cta-btn {
+    margin-top: 1.5rem;
+    position: relative;
+    /* Gradient Background by default */
+    background: linear-gradient(135deg, var(--color-primary), #2e7d32);
+    color: white;
+    /* White text */
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    /* Default shadow */
+}
+
+/* Shimmer Effect */
+.card-cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-25deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    /* Fast pass */
+    100% {
+        left: 200%;
+    }
+}
+
+.card-cta-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+}
+
+.card-cta-btn span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.card-cta-btn:hover span {
+    transform: translateX(3px);
+}
+
+/* CLEANUP: Remove old ::before gradient slide since we are filled by default */
+.card-cta-btn::before {
+    display: none;
+}
+
+.card-cta-btn span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.card-cta-btn:hover span {
+    transform: translateX(3px);
+}
+
+/* =========================================
+   JUNGLE THEME - VERMICOMPOST PAGE
+   ========================================= */
+
+/* Theme Variables */
+.jungle-theme {
+    --jungle-dark: #0f2810;
+    /* Deep Forest */
+    --jungle-mid: #1b4d24;
+    /* Mid-leaf */
+    --jungle-light: #4caf50;
+    /* New growth */
+    --jungle-accent: #ffd54f;
+    /* Sunbeam/Pollen */
+    --earth-brown: #3e2723;
+    /* Soil */
+    --earth-light: #5d4037;
+    /* Dry Soil */
+    --text-cream: #f1f8e9;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    background-color: var(--jungle-dark);
+    color: var(--text-cream);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.jungle-theme h1,
+.jungle-theme h2,
+.jungle-theme h3 {
+    font-family: 'Playfair Display', serif;
+    /* Narrative feel */
+}
+
+/* Nav */
+.jungle-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    z-index: 100;
+}
+
+.jungle-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jungle-nav .logo span {
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.jungle-nav .back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.jungle-nav .back-link:hover {
+    opacity: 1;
+}
+
+/* ---------------- HERO ---------------- */
+.jungle-hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    /* Deep Radial Gradient - Faking Sun filtering through canopy */
+    background: radial-gradient(circle at 50% 20%, #2e7d32 0%, #1b5e20 40%, #051907 80%);
+}
+
+/* Atmospheric Particles/Leaves */
+.leaf {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50% 0 50% 0;
+    pointer-events: none;
+}
+
+.layer-1 {
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    animation: float 10s infinite ease-in-out;
+}
+
+.layer-2 {
+    top: 60%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    animation: float 14s infinite ease-in-out reverse;
+    border-radius: 0 50% 0 50%;
+    opacity: 0.03;
+}
+
+.layer-3 {
+    top: 10%;
+    right: 30%;
+    width: 50px;
+    height: 50px;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0.1;
+}
+
+.hero-label {
+    display: inline-block;
+    color: var(--jungle-accent);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s forwards 0.5s;
+}
+
+.jungle-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #ffffff, #a5d6a7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: fadeUp 1s forwards 0.8s;
+}
+
+.jungle-subtitle {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 1s forwards 1.1s;
+}
+
+/* Hero Scroll Indicator */
+.scroll-indicator {
+    margin-top: 4rem;
+    opacity: 0.6;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    /* Removed absolute positioning to prevent overlap */
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 40px;
+    background: white;
+}
+
+/* ---------------- SECTION 2: ROOTS ---------------- */
+.roots-section {
+    padding: 8rem 0;
+    background: var(--earth-brown);
+    position: relative;
+    /* Create texture pattern using CSS */
+    background-image:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 10px),
+        repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 10px);
+
+}
+
+
+.story-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    border-left: 2px solid var(--jungle-accent);
+    padding-left: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.story-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-block h2 {
+    font-size: 3rem;
+    color: var(--jungle-accent);
+    margin-bottom: 2rem;
+}
+
+.story-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+}
+
+/* ---------------- SECTION 3: ECOSYSTEM ---------------- */
+.ecosystem-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--earth-brown) 0%, var(--jungle-mid) 100%);
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: white;
+}
+
+.elements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.element-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.element-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.element-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chemical-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--jungle-accent);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.chemical-symbol::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 213, 79, 0.3);
+    z-index: -1;
+}
+
+.element-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.element-card p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    color: white;
+}
+
+/* ---------------- SECTION 4: BENEFITS ---------------- */
+.lush-benefits {
+    padding: 6rem 0;
+    background: var(--jungle-dark);
+}
+
+.section-heading-start {
+    font-size: 3rem;
+    max-width: 400px;
+    margin-bottom: 4rem;
+    color: white;
+}
+
+.benefit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.b-card {
+    background: #1e3a29;
+    /* Dark leaf color */
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.b-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Organic Shapes */
+.b-1 {
+    border-radius: 40px 0 40px 0;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+}
+
+.b-2 {
+    border-radius: 0 40px 0 40px;
+    background: linear-gradient(135deg, #0277bd, #01579b);
+    /* Water hint */
+}
+
+.b-3 {
+    border-radius: 40px 40px 0 0;
+    background: linear-gradient(135deg, #ef6c00, #e65100);
+    /* Sun hint */
+}
+
+.b-4 {
+    border-radius: 0 0 40px 40px;
+    background: linear-gradient(135deg, #7cb342, #558b2f);
+}
+
+.b-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.b-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* ---------------- SECTION 5: BUY ---------------- */
+.jungle-buy {
+    padding: 8rem 0;
+    background-color: #f1f8e9;
+    /* Light clearing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.buy-card-wrapper {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--color-text-main);
+    /* Reset text color */
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease;
+}
+
+.buy-card-wrapper.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.product-visual {
+    flex: 1;
+    background: #e8f5e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    position: relative;
+}
+
+.glow-bg {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #4caf50 0%, transparent 70%);
+    opacity: 0.2;
+}
+
+.product-visual img {
+    width: 100%;
+    max-width: 300px;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+    transform: rotate(-5deg);
+    transition: transform 0.5s;
+}
+
+.product-visual img:hover {
+    transform: rotate(0) scale(1.05);
+}
+
+.product-details {
+    flex: 1.2;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge-premium {
+    display: inline-block;
+    background: var(--jungle-dark);
+    color: var(--jungle-accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+
+.product-details h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--jungle-dark);
+    /* Dark text for light section */
+    margin-bottom: 1rem;
+}
+
+.product-desc {
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.specs-list {
+    list-style: none;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-left: 0;
+}
+
+.specs-list li {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.price-block {
+    margin-bottom: 2rem;
+}
+
+.price-block .price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--jungle-mid);
+}
+
+.price-block .unit {
+    color: #999;
+}
+
+.btn-jungle-primary {
+    background: var(--jungle-mid);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+    display: inline-block;
+}
+
+.btn-jungle-primary:hover {
+    background: var(--jungle-dark);
+    transform: translateY(-3px);
+}
+
+.shipping-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .jungle-title {
+        font-size: 3rem;
+    }
+
+    .hero-container {
+        padding: 0 1.5rem;
+    }
+
+    .story-block {
+        padding-left: 1.5rem;
+        border-left-width: 4px;
+    }
+
+    .buy-card-wrapper {
+        flex-direction: column;
+    }
+
+    .product-details {
+        padding: 2rem;
+    }
+
+    .product-visual {
+        padding: 2rem;
+    }
+}
+
+.jungle-footer {
+    padding: 2rem;
+    text-align: center;
+    background: var(--jungle-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.jungle-footer p,
+.jungle-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Update Nav Logo Size */
+.jungle-nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+}
+
+.jungle-nav .logo img {
+    height: 40px;
+    /* Force small size */
+    width: auto;
+}
+
+/* Header Visibility and Mobile Fixes */
+.jungle-nav {
+    background: rgba(15, 40, 16, 0.85);
+    /* Semi-transparent dark green */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Grids */
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+
+    .jungle-hero {
+        padding-top: 80px;
+        /* Prevent header overlap */
+    }
+}
+
+/* ---------------- SECTION 3: FOCUS CARDS ---------------- */
+.jungle-focus-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.focus-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.focus-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.focus-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.focus-card h3 {
+    color: var(--jungle-accent);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.focus-card p {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------------- SECTION 4: PROCESS ---------------- */
+.process-visual-grid {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+    gap: 5rem;
+    /* Increased gap to prevent step number overlap */
+}
+
+.process-visual-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-item {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ccc;
+    position: relative;
+}
+
+.step-num {
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+.step-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1b5e20;
+    font-weight: 700;
+}
+
+.step-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.image-wrapper-glass {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.image-wrapper-glass img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+/* ---------------- SECTION 5: NUTRIENT TABLE ---------------- */
+.nutrient-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.nutrient-table td {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nutrient-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Fixed Column Targeting */
+.nutrient-table td:nth-child(1) {
+    font-weight: 700;
+    color: var(--jungle-accent);
+    padding-right: 1rem;
+    vertical-align: top;
+    width: 30%;
+    /* Fixed width for label */
+}
+
+.nutrient-table td:nth-child(2) {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+/* Remove old 3rd child rule if it existed */
+
+@media (max-width: 768px) {
+    .nutrient-table {
+        display: block;
+    }
+
+    .nutrient-table tbody {
+        display: block;
+    }
+
+    .nutrient-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1rem;
+    }
+
+    .nutrient-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .nutrient-table td {
+        display: block;
+        width: 100% !important;
+        padding: 0.2rem 0;
+        border: none;
+    }
+
+    .nutrient-table td:nth-child(1) {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Optional: Style 3rd column if it exists (Vermicompost) */
+.nutrient-table td:nth-child(3) {
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    vertical-align: top;
+}
+
+/* ---------------- SECTION 6: COMPARISON ---------------- */
+.benefit-detail-card {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 16px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.5s;
+}
+
+.benefit-detail-card.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.benefit-detail-card h4 {
+    color: var(--jungle-accent);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.benefit-detail-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+.comparison-bar {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.comp-item {
+    flex: 1;
+    padding: 2rem;
+    border-radius: 12px;
+    color: #fff;
+    /* Enforce white text */
+}
+
+.comp-item p {
+    color: rgba(255, 255, 255, 0.9);
+    /* High contrast for body text */
+}
+
+.comp-item.bad {
+    background: rgba(255, 50, 50, 0.15);
+    /* Slightly more visible red */
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.comp-item.good {
+    background: rgba(76, 175, 80, 0.25);
+    /* More visible green */
+    border: 1px solid var(--jungle-light);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+    .jungle-nav .logo img {
+        height: 32px;
+    }
+
+    /* Keep functional layout fixes only */
+    .process-visual-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* Fix for process numbering visibility */
+    .process-steps {
+        padding-left: 3.5rem;
+    }
+
+    .step-num {
+        font-size: 1.5rem;
+        left: -3rem;
+    }
+
+    /* Stacking complicated components is still necessary to prevent breaking */
+    .comparison-bar {
+        flex-direction: column;
+    }
+
+    .buy-card-wrapper {
+        flex-direction: column;
+    }
+
+    .image-wrapper-glass {
+        margin-top: 2rem;
+    }
+}
+
+/* ---------------- DARK MODE SUPPORT FOR JUNGLE THEME ---------------- */
+body.dark-theme.jungle-theme {
+    background-color: #050f05;
+    /* Deepest green/black */
+}
+
+/* Override Light Sections in Dark Mode */
+body.dark-theme .process-section {
+    background: #0a1f0d !important;
+    /* Dark Jungle */
+    color: #e8f5e9 !important;
+}
+
+body.dark-theme .process-section h2 {
+    color: #81c784 !important;
+    /* Light Green Accent */
+}
+
+body.dark-theme .process-section p {
+    color: #b0bec5 !important;
+}
+
+body.dark-theme .step-item h4 {
+    color: #66bb6a !important;
+}
+
+body.dark-theme .step-item {
+    border-left-color: #2e7d32;
+    /* Darker border */
+}
+
+/* Update Buy Section for Dark Mode */
+body.dark-theme .jungle-buy {
+    background-color: #050f05;
+}
+
+body.dark-theme .buy-card-wrapper {
+    background: linear-gradient(135deg, #1b3320 0%, #0d1f10 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .product-details h2 {
+    color: #fff;
+}
+
+body.dark-theme .product-desc {
+    color: #cfd8dc;
+}
+
+body.dark-theme .specs-list li {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #eceff1;
+}
+
+body.dark-theme .price-block .price {
+    color: #81c784;
+}
+
+/* Nav Adaptation */
+body.dark-theme .jungle-nav {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom-color: #333;
+}
+
+/* Dropdown Dark Mode */
+body.dark-theme .lang-select {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+/* --- Mobile Optimization for Jungle Sections --- */
+@media (max-width: 768px) {
+
+    .jungle-focus-section,
+    .roots-section,
+    .process-section,
+    .deep-dive-section,
+    .benefits-deep,
+    .jungle-buy,
+    .related-products {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .jungle-title {
+        font-size: 2.5rem !important;
+        /* Smaller title on mobile */
+    }
+
+    .jungle-subtitle {
+        font-size: 1.1rem !important;
+    }
+
+    .grid {
+        gap: 2rem !important;
+    }
+}
+
+/* --- Fix for Language Dropdown Visibility --- */
+.lang-select option {
+    background-color: white;
+    /* Light mode background */
+    color: #333;
+    /* Light mode text */
+}
+
+body.dark-theme .lang-select option {
+    background-color: #333;
+    /* Dark mode background */
+    color: white;
+    /* Dark mode text */
+}
+
+/* Explicit Jungle Footer Definition */
+.jungle-footer {
+    background: #051907;
+    /* Darkest forest green */
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+.jungle-footer a {
+    color: var(--jungle-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.jungle-footer a:hover {
+    color: var(--jungle-accent);
+}
+
+/* -----------------------------------------------------------
+   PREMIUM SCROLL ANIMATIONS (Curiosity Engine)
+   ----------------------------------------------------------- */
+
+/* Base state for all animated elements */
+.anim-on-scroll {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    /* "Apple" style easing */
+}
+
+/* Visibility State */
+.anim-visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* --- Animation Variants --- */
+
+/* Fade Up (Standard) */
+.anim-fade-up {
+    transform: translateY(40px);
+}
+
+/* Fade Down */
+.anim-fade-down {
+    transform: translateY(-40px);
+}
+
+/* Fade from Left */
+.anim-fade-right {
+    transform: translateX(-40px);
+}
+
+/* Fade from Right */
+.anim-fade-left {
+    transform: translateX(40px);
+}
+
+/* Zoom In (Impact) */
+.anim-zoom-in {
+    transform: scale(0.92);
+}
+
+/* Blur Reveal (Dreamy) */
+.anim-blur {
+    filter: blur(10px);
+    transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+
+.anim-blur.anim-visible {
+    filter: blur(0);
+}
+
+/* --- Utility Delays --- */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+.delay-600 {
+    transition-delay: 600ms;
+}
+
+/* Market Category Title */
+.market-category-title {
+    width: 100%;
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.2);
+    font-size: 1.8rem;
+    color: var(--color-text-head);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+}
+
+body.dark-theme .market-category-title {
+    color: var(--color-text-main);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
